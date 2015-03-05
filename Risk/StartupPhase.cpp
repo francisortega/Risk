@@ -1,3 +1,12 @@
+/**
+ *
+ * @author  Francis Ortega 1295578
+ * @author  Michal Wozniak 1941097
+ * @author  Darren Mau 6057993
+ * @author  Francis Cote-Tremblay 6615287
+ * @date    03-05-2015
+ * @version project v1
+ */
 #include <iostream>
 #include <string>
 #include <stdlib.h>
@@ -18,7 +27,7 @@ StartupPhase::StartupPhase(const StartupPhase& orig) {
 StartupPhase::~StartupPhase() {
 }
 
-void StartupPhase::assignRandomCountry(vector<Country> world, list<string> playerNames, const int numOfPlayers){
+void StartupPhase::assignRandomCountry(vector<Country> &world, list<string> playerNames, const int numOfPlayers){
 
 	cout << "Players are now being assigned random a country" << endl;
 
@@ -50,6 +59,7 @@ void StartupPhase::assignRandomCountry(vector<Country> world, list<string> playe
 
 				//the iteration work with the numOfPlayers. for example, if 4 players, then it will assign players to the first 4 country, then to the 5-8 countries, then 9-12, etc
 				world[i + j].setOwner((*it));
+				world[i+ j].setArmy(10);
 
 				//after the player name is added, it is deleted from the playerCopy in order avoid searching through the array
 
@@ -59,24 +69,6 @@ void StartupPhase::assignRandomCountry(vector<Country> world, list<string> playe
 		  }
 		i = i + numOfPlayers;
 		}
-		
-
-		/*
-		for (int j = 0; j<i; j++){
-			if (randomSelection == previouslyGenerated[j]){
-				selectionExist = true;
-			}
-		}
-		if (!selectionExist){
-			players[i].name = playerNames[randomSelection];
-			players[i].countries[0].name = countries[i].name;
-			previouslyGenerated[i] = randomSelection;
-			i++;
-		}
-
-		selectionExist = false;
-	}*/
-
 
 	cout << "Here are the countries and their assigned players:\n";
 	cout << "NOTE: if the numOfCountries is not divisible by the numOfPlayers, the rest will not be assigned. ex: 42 is not divisible by 4 players, therefore there will be 2 contries left unassigned and ready to be conquered by anyone" << endl << endl;

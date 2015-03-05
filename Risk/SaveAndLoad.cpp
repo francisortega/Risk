@@ -1,3 +1,12 @@
+/**
+ *
+ * @author  Francis Ortega 1295578
+ * @author  Michal Wozniak 1941097
+ * @author  Darren Mau 6057993
+ * @author  Francis Cote-Tremblay 6615287
+ * @date    03-05-2015
+ * @version project v1
+ */
 #include "SaveAndLoad.h"
 
 
@@ -151,13 +160,13 @@ bool SaveAndLoad::validate(Map map)
 	vector<bool> visited;
 	//vector<string> visitedContinent;
 	//set visited to false.
-	vector<Country> countries = map.getWorldMap();
-	for(size_t n=0; n < countries.size(); n++)
+	vector<Country> *countries = map.getWorldMap();
+	for(size_t n=0; n < countries->size(); n++)
 	{
 		visited.push_back(false);
 	}
 	
-	visitCountry(map, visited, countries, countries[0].getName());
+	visitCountry(map, visited, *countries, countries->at(0).getName());
 	 
 	//check if the country is connected graph.
 	for(size_t n=0; n < visited.size(); n++)
@@ -179,7 +188,7 @@ bool SaveAndLoad::validate(Map map)
 		countries1 = map.getCountriesOfContinents(continent[n].name);
 		for(size_t i = 0; i < countries1.size(); i++)
 		{
-			num = getNumber(countries,countries1[i].getName());
+			num = getNumber(*countries,countries1[i].getName());
 			if(visited[num] == false)
 			{
 				return false;
@@ -209,20 +218,20 @@ bool SaveAndLoad::save(Map map, string name)
 			}
 			myfile << "\n";
 			myfile << "[Territories]\n";
-			vector<Country> countries = map.getWorldMap();
-			for(size_t n=0; n < countries.size(); n++)
+			vector<Country>* countries = map.getWorldMap();
+			for(size_t n=0; n < countries->size(); n++)
 			{
 				//line break if it is a new continent
-				if(n > 0 && countries[n-1].getContinent() != countries[n].getContinent())
+				if(n > 0 && countries->at(n-1).getContinent() != countries->at(n).getContinent())
 				{
 					myfile << "\n";
 				}
 
-				myfile << countries[n].getName() << ",";
-				myfile << countries[n].getX() << ",";
-				myfile << countries[n].getY() << ",";
-				myfile << countries[n].getContinent() << ",";
-				vector<Country> adjCountries = map.getAdjacentCountries(countries[n].getName());
+				myfile << countries->at(n).getName() << ",";
+				myfile << countries->at(n).getX() << ",";
+				myfile << countries->at(n).getY() << ",";
+				myfile << countries->at(n).getContinent() << ",";
+				vector<Country> adjCountries = map.getAdjacentCountries(countries->at(n).getName());
 				for(size_t i=0; i < adjCountries.size() -1; i++)
 				{
 					myfile << adjCountries[i].getName() << ",";

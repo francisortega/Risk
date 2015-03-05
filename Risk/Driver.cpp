@@ -1,10 +1,12 @@
-/* 
- * File:   main.cpp
- * Author: ubuntu
+/**
  *
- * Created on January 12, 2015, 3:55 AM
+ * @author  Francis Ortega 1295578
+ * @author  Michal Wozniak 1941097
+ * @author  Darren Mau 6057993
+ * @author  Francis Cote-Tremblay 6615287
+ * @date    03-05-2015
+ * @version project v1
  */
-
 #include <cstdlib>
 #include <iostream>
 #include <limits>
@@ -49,7 +51,7 @@ int main() {
 	SaveAndLoad* sl = new SaveAndLoad();
 	Map map;
 	bool t = sl->load(map, "World.map");
-	vector<Country> world = map.getWorldMap();
+	vector<Country> *world = map.getWorldMap();
 	//Player will be used in future versions
     //Player players [numOfPlayers];
      
@@ -65,7 +67,7 @@ int main() {
     
    
     //This methos uses rand to assign a random player to a country.
-    StartupPhase::assignRandomCountry(world, playerNames, numOfPlayers);
+    StartupPhase::assignRandomCountry(*world, playerNames, numOfPlayers);
 	
    
 	
@@ -74,15 +76,15 @@ int main() {
     
     //The game will be round robin, but for now countries attack their direct neighbor just for testing purposes.
 
-	int worldSize = world.size();
+	int worldSize = world->size();
 	Battle battle;
 
 	cout << endl << "Let the battle begin!" << endl << endl;
 
 	for (int i = 0; i < worldSize-1; i++){
-
-		cout << world[i].getName() << " will attack " << world[i + 1].getName() << endl;
-		battle.war(world[i], world[i+1]);
+		//cout <<	world->at(i).getOwner() << endl;
+		cout << world->at(i).getName() << " will attack " << world->at(i + 1).getName() << endl;
+		battle.war(world->at(i), world->at(i+1));
 
 	}
     

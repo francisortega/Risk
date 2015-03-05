@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Risk", "Risk\Risk.vcxproj", "{649E480B-B883-43F2-814B-6014B313CF5F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "risk", "risk\risk.vcxproj", "{396CD42F-F4EB-4F94-866C-BDA91015E57A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{649E480B-B883-43F2-814B-6014B313CF5F}.Debug|Win32.ActiveCfg = Debug|Win32
-		{649E480B-B883-43F2-814B-6014B313CF5F}.Debug|Win32.Build.0 = Debug|Win32
-		{649E480B-B883-43F2-814B-6014B313CF5F}.Release|Win32.ActiveCfg = Release|Win32
-		{649E480B-B883-43F2-814B-6014B313CF5F}.Release|Win32.Build.0 = Release|Win32
+		{396CD42F-F4EB-4F94-866C-BDA91015E57A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{396CD42F-F4EB-4F94-866C-BDA91015E57A}.Debug|Win32.Build.0 = Debug|Win32
+		{396CD42F-F4EB-4F94-866C-BDA91015E57A}.Release|Win32.ActiveCfg = Release|Win32
+		{396CD42F-F4EB-4F94-866C-BDA91015E57A}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,13 +1,11 @@
 /**
  *
- * @author Francis Ortega 1295578
- * @version 02-05-15
- * @version Assignment 1
- *
- * Map Functions
- *
- * Defines all the necessary functions needed for the Map class
- *
+ * @author  Francis Ortega 1295578
+ * @author  Michal Wozniak 1941097
+ * @author  Darren Mau 6057993
+ * @author  Francis Cote-Tremblay 6615287
+ * @date    03-05-2015
+ * @version project v1
  */
 
 #include "Map.h"
@@ -112,8 +110,8 @@ std::vector<Country> Map::getCountriesOfContinents(std::string continentName) {
  *
  * @return vector<struct>
  */
-std::vector<Country> Map::getWorldMap() {
-	return countries;
+std::vector<Country> *Map::getWorldMap() {
+	return &countries;
 }
 
 /**

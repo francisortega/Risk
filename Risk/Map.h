@@ -1,8 +1,11 @@
 /**
  *
  * @author  Francis Ortega 1295578
- * @date    02-05-2015
- * @version Assignment 1
+ * @author  Michal Wozniak 1941097
+ * @author  Darren Mau 6057993
+ * @author  Francis Cote-Tremblay 6615287
+ * @date    03-05-2015
+ * @version project v1
  *
  * Map Class
  *
@@ -26,17 +29,6 @@ public:
 	Map();
 	~Map();
 
-	/* Information about a country
-	struct Country {
-		int id;
-		std::string name;
-		std::string continent;
-		std::string player;
-		std::vector<std::string> armies;
-		int x;
-		int y;
-	} countryInfo; */
-
 	Country countryInfo;
 
 	struct Continent {
@@ -46,7 +38,7 @@ public:
 
 	/* Methods to retrieve more about the world map */
 	std::vector<Country> getCountriesOfContinents(std::string continentName);
-	std::vector<Country> getWorldMap();
+	std::vector<Country> *getWorldMap();
 	std::vector<Country> getAdjacentCountries(std::string countryName);
 
 	/* Get more information about a country */
