@@ -13,11 +13,11 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="AttackPhase">
+      <UniqueIdentifier>{a0451caa-3382-4dbc-9dc9-f1af5d8d352c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Battle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Country.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -33,11 +33,14 @@
     <ClInclude Include="StartupPhase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Battle.h">
+      <Filter>AttackPhase</Filter>
+    </ClInclude>
+    <ClInclude Include="Dice.h">
+      <Filter>AttackPhase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Battle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Country.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -55,6 +58,12 @@
     </ClCompile>
     <ClCompile Include="StartupPhase.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle.cpp">
+      <Filter>AttackPhase</Filter>
+    </ClCompile>
+    <ClCompile Include="Dice.cpp">
+      <Filter>AttackPhase</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
