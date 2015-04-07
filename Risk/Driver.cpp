@@ -18,7 +18,7 @@
 #include "Player.h"
 #include "StartupPhase.h"
 #include "Map.h"
-#include "Battle.h"
+#include "AttackPhase\Battle.h"
 
 using namespace std;
 

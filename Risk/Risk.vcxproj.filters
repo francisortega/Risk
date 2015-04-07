@@ -9,12 +9,11 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Cards">
+      <UniqueIdentifier>{56e12d75-d15a-478a-ac9b-c5c79e8a7423}</UniqueIdentifier>
     </Filter>
     <Filter Include="AttackPhase">
-      <UniqueIdentifier>{a0451caa-3382-4dbc-9dc9-f1af5d8d352c}</UniqueIdentifier>
+      <UniqueIdentifier>{0f465211-5dfb-4594-ac48-1d39735c400d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,18 +32,18 @@
     <ClInclude Include="StartupPhase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Battle.h">
+    <ClInclude Include="Cards\Cards.h">
+      <Filter>Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPhase\Dice.h">
       <Filter>AttackPhase</Filter>
     </ClInclude>
-    <ClInclude Include="Dice.h">
+    <ClInclude Include="AttackPhase\Battle.h">
       <Filter>AttackPhase</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Country.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Driver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
@@ -59,10 +58,16 @@
     <ClCompile Include="StartupPhase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Battle.cpp">
+    <ClCompile Include="Cards\Cards.cpp">
+      <Filter>Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="Driver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPhase\Dice.cpp">
       <Filter>AttackPhase</Filter>
     </ClCompile>
-    <ClCompile Include="Dice.cpp">
+    <ClCompile Include="AttackPhase\Battle.cpp">
       <Filter>AttackPhase</Filter>
     </ClCompile>
   </ItemGroup>

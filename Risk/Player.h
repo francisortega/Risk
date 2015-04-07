@@ -9,6 +9,7 @@
  */
 #include <iostream>
 #include "Country.h"
+#include "Cards\Cards.h"
 using namespace std;
 #ifndef PLAYER_H
 #define	PLAYER_H
@@ -18,6 +19,7 @@ public:
 	string name;
 	Country countries[10];
 	int armies;
+	Cards playerCard;
 	Player();
 	Player(const Player& orig);
 	virtual ~Player();
