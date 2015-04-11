@@ -144,7 +144,7 @@ void SaveAndLoad::visitCountry(Map &map, vector<bool> &visited, vector<Country> 
 	{
 		visited[num] = true;
 		//go throught all the country that is connected to the country.
-		vector<Country> adjCountries = map.getAdjacentCountries(countries[num].getName());
+		vector<Country> adjCountries = map.getAdjacentCountries(countries[num].getName(), false);
 		for(size_t i=0; i < adjCountries.size(); i++)
 		{
 			visitCountry(map, visited, countries, adjCountries[i].getName());
@@ -231,7 +231,7 @@ bool SaveAndLoad::save(Map map, string name)
 				myfile << countries->at(n).getX() << ",";
 				myfile << countries->at(n).getY() << ",";
 				myfile << countries->at(n).getContinent() << ",";
-				vector<Country> adjCountries = map.getAdjacentCountries(countries->at(n).getName());
+				vector<Country> adjCountries = map.getAdjacentCountries(countries->at(n).getName(), false);
 				for(size_t i=0; i < adjCountries.size() -1; i++)
 				{
 					myfile << adjCountries[i].getName() << ",";

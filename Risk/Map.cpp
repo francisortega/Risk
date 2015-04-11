@@ -40,7 +40,7 @@ bool Map::areContinentsAdjacent(std::string continentX, std::string continentY) 
 
 	// Check each country within continent
 	for (int i = 0; i < countriesCont.size(); i++) {
-		std::vector<Country> adjCountries = getAdjacentCountries(countriesCont[i].getName());
+		std::vector<Country> adjCountries = getAdjacentCountries(countriesCont[i].getName(), false);
 		//std::cout << "\n" << countriesCont[i].name << ":" << std::endl;
 
 		// Loop through adjacent continents and find whether it is connected to a country from continentY
@@ -58,28 +58,6 @@ bool Map::areContinentsAdjacent(std::string continentX, std::string continentY) 
 	}
 
 	return isFound;
-}
-
-/**
- * getAdjacentCountries
- *
- * Retrieve all adjacent countries
- * 
- * @param countryName - string name of country
- * @return vector<struct>
- */
-std::vector<Country> Map::getAdjacentCountries(std::string countryName) {
-	int idc = getIdOfCountry(countryName);
-	std::vector<Country> adjCountries;
-
-	// Look in the adjacency matrix for the adjacent countries
-	for (int i = 0; i < countries.size(); i++) {
-		if (adjacentCountries[idc][i] == 1) {
-			adjCountries.push_back(countries[i]);
-		}
-	}
-
-	return adjCountries;
 }
 
 /**
@@ -101,6 +79,62 @@ std::vector<Country> Map::getCountriesOfContinents(std::string continentName) {
 	}
 
 	return countriesOfContinents;
+}
+
+/**
+ * getAdjacentCountries
+ *
+ * Retrieve all adjacent countries
+ * 
+ * @param countryName - string name of country
+ * @param hideCountriesOfPlayer - boolean
+ * @return vector<struct>
+ */
+std::vector<Country> Map::getAdjacentCountries(std::string countryName, bool hideCountriesOfPlayer) {
+	int idc = getIdOfCountry(countryName);
+	std::string playerName = countries[idc].getOwner(); // Country object to get player name
+	std::vector<Country> adjCountries;
+
+	// Look in the adjacency matrix for the adjacent countries
+	for (int i = 0; i < countries.size(); i++) {
+		if (adjacentCountries[idc][i] == 1) {
+
+			// Hide player's own countries
+			if(hideCountriesOfPlayer) {
+				// Only include countries that are not owned by player
+				if(countries[i].getOwner().compare(playerName) != 0) {
+					adjCountries.push_back(countries[i]);
+				}
+
+			// Include all adjacent countries to selected country
+			} else {
+				adjCountries.push_back(countries[i]);
+			}
+		}
+	}
+
+	return adjCountries;
+}
+
+/**
+ * getCountriesByPlayer
+ *
+ * Get countries and adjacent countries by a player
+ *
+ * @param playerName - string name of player
+ * @return vector<string>
+ */
+std::vector<Country> Map::getCountryList(std::string playerName) {
+	std::vector<Country> countriesByPlayer;
+
+	// Look in the adjacency matrix for the adjacent countries
+	for (int i = 0; i < countries.size(); i++) {
+		if (countries[i].getOwner().compare(playerName) == 0) {
+			countriesByPlayer.push_back(countries[i]);
+		}
+	}
+
+	return countriesByPlayer;
 }
 
 /**
