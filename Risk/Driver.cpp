@@ -19,6 +19,7 @@
 #include "StartupPhase.h"
 #include "Map.h"
 #include "AttackPhase\Battle.h"
+#include "AttackPhase.h"
 
 using namespace std;
 
@@ -69,6 +70,7 @@ int main() {
     //This methos uses rand to assign a random player to a country.
     StartupPhase::assignRandomCountry(*world, playerNames, numOfPlayers);
 	
+	
    
 	
     //END STARTUP PHASE 
@@ -77,16 +79,18 @@ int main() {
     //The game will be round robin, but for now countries attack their direct neighbor just for testing purposes.
 
 	int worldSize = world->size();
-	Battle battle;
+	
 
 	cout << endl << "Let the battle begin!" << endl << endl;
 
+	//need to mod to add player parameter Player *player to battle.war
 	for (int i = 0; i < worldSize-1; i++){
 		//cout <<	world->at(i).getOwner() << endl;
 		cout << world->at(i).getName() << " will attack " << world->at(i + 1).getName() << endl;
-		battle.war(world->at(i), world->at(i+1));
+		//Battle::war(player, world->at(i), world->at(i+1));
 
 	}
+	
     
     
     return 0;

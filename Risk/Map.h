@@ -1,18 +1,18 @@
 /**
- *
- * @author  Francis Ortega 1295578
- * @author  Michal Wozniak 1941097
- * @author  Darren Mau 6057993
- * @author  Francis Cote-Tremblay 6615287
- * @date    03-05-2015
- * @version project v1
- *
- * Map Class
- *
- * Defines the structure of the world map, implementing a connected graph where nodes are
- * countries connected by edges which is defined by a matrix.
- *
- */
+*
+* @author  Francis Ortega 1295578
+* @author  Michal Wozniak 1941097
+* @author  Darren Mau 6057993
+* @author  Francis Cote-Tremblay 6615287
+* @date    03-05-2015
+* @version project v1
+*
+* Map Class
+*
+* Defines the structure of the world map, implementing a connected graph where nodes are
+* countries connected by edges which is defined by a matrix.
+*
+*/
 
 #pragma once
 
@@ -39,7 +39,10 @@ public:
 	/* Methods to retrieve more about the world map */
 	std::vector<Country> getCountriesOfContinents(std::string continentName);
 	std::vector<Country> *getWorldMap();
-	std::vector<Country> getAdjacentCountries(std::string countryName);
+	std::vector<Country> getAdjacentCountries(std::string countryName, std::string countryType);
+
+	/* Get countries and adjacent countries by a player */
+	std::vector<Country> getCountryList(std::string playerName);
 
 	/* Get more information about a country */
 	Country *get(std::string countryName);

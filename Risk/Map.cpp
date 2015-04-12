@@ -1,12 +1,12 @@
 /**
- *
- * @author  Francis Ortega 1295578
- * @author  Michal Wozniak 1941097
- * @author  Darren Mau 6057993
- * @author  Francis Cote-Tremblay 6615287
- * @date    03-05-2015
- * @version project v1
- */
+*
+* @author  Francis Ortega 1295578
+* @author  Michal Wozniak 1941097
+* @author  Darren Mau 6057993
+* @author  Francis Cote-Tremblay 6615287
+* @date    03-05-2015
+* @version project v1
+*/
 
 #include "Map.h"
 #include <string>
@@ -14,10 +14,10 @@
 #include <stdio.h>
 
 /**
- * Map
- *   
- * Class constructor - adds all the countries including their adjacency
- */
+* Map
+*
+* Class constructor - adds all the countries including their adjacency
+*/
 Map::Map() {
 }
 
@@ -25,14 +25,14 @@ Map::~Map() {
 }
 
 /**
- * areContinentsAdjacent
- *
- * Determine whether two continents are adjacent
- *
- * @param continentX - string name of first continent
- * @param continentY - string name of second continent
- * @return boolean
- */
+* areContinentsAdjacent
+*
+* Determine whether two continents are adjacent
+*
+* @param continentX - string name of first continent
+* @param continentY - string name of second continent
+* @return boolean
+*/
 bool Map::areContinentsAdjacent(std::string continentX, std::string continentY) {
 	// Get all countries within continent
 	std::vector<Country> countriesCont = getCountriesOfContinents(continentX);
@@ -40,7 +40,7 @@ bool Map::areContinentsAdjacent(std::string continentX, std::string continentY) 
 
 	// Check each country within continent
 	for (int i = 0; i < countriesCont.size(); i++) {
-		std::vector<Country> adjCountries = getAdjacentCountries(countriesCont[i].getName());
+		std::vector<Country> adjCountries = getAdjacentCountries(countriesCont[i].getName(), "all");
 		//std::cout << "\n" << countriesCont[i].name << ":" << std::endl;
 
 		// Loop through adjacent continents and find whether it is connected to a country from continentY
@@ -61,35 +61,13 @@ bool Map::areContinentsAdjacent(std::string continentX, std::string continentY) 
 }
 
 /**
- * getAdjacentCountries
- *
- * Retrieve all adjacent countries
- * 
- * @param countryName - string name of country
- * @return vector<struct>
- */
-std::vector<Country> Map::getAdjacentCountries(std::string countryName) {
-	int idc = getIdOfCountry(countryName);
-	std::vector<Country> adjCountries;
-
-	// Look in the adjacency matrix for the adjacent countries
-	for (int i = 0; i < countries.size(); i++) {
-		if (adjacentCountries[idc][i] == 1) {
-			adjCountries.push_back(countries[i]);
-		}
-	}
-
-	return adjCountries;
-}
-
-/**
- * getCountriesOfContinents
- *
- * Retrieve all countries in a continent
- *
- * @param continentName - string name of continent
- * @return vector<struct>
- */
+* getCountriesOfContinents
+*
+* Retrieve all countries in a continent
+*
+* @param continentName - string name of continent
+* @return vector<struct>
+*/
 std::vector<Country> Map::getCountriesOfContinents(std::string continentName) {
 	std::vector<Country> countriesOfContinents;
 
@@ -104,24 +82,88 @@ std::vector<Country> Map::getCountriesOfContinents(std::string continentName) {
 }
 
 /**
- * getWorldMap
- *
- * Retrieve all countries in the world
- *
- * @return vector<struct>
- */
+* getAdjacentCountries
+*
+* Retrieve all adjacent countries
+*
+* @param countryName - string name of country
+* @param countryType - choice between "all", "inc" (only player's), "exc" (only enemies')
+* @return vector<struct>
+*/
+std::vector<Country> Map::getAdjacentCountries(std::string countryName, std::string countryType) {
+	int idc = getIdOfCountry(countryName);
+	std::string playerName = countries[idc].getOwner(); // Country object to get player name
+
+	std::vector<Country> adjCountries;
+
+	// Look in the adjacency matrix for the adjacent countries
+	for (int i = 0; i < countries.size(); i++) {
+		if (adjacentCountries[idc][i] == 1) {
+
+			if (countryType.compare("all") == 0) {
+				// Include all countries adjacent to selected country
+				adjCountries.push_back(countries[i]);
+
+			}
+			else if (countryType.compare("inc") == 0) {
+				// Only include countries that ARE OWNED by player
+				if (countries[i].getOwner().compare(playerName) == 0) {
+					adjCountries.push_back(countries[i]);
+				}
+
+			}
+			else if (countryType.compare("exc") == 0) {
+				// Only include countries that ARE NOT OWNED by player
+				if (countries[i].getOwner().compare(playerName) != 0) {
+					adjCountries.push_back(countries[i]);
+				}
+			}
+		}
+	}
+
+	return adjCountries;
+}
+
+/**
+* getCountriesByPlayer
+*
+* Get countries and adjacent countries by a player
+*
+* @param playerName - string name of player
+* @return vector<string>
+*/
+std::vector<Country> Map::getCountryList(std::string playerName) {
+	std::vector<Country> countriesByPlayer;
+
+	// Look in the adjacency matrix for the adjacent countries
+	for (int i = 0; i < countries.size(); i++) {
+		if (countries[i].getOwner().compare(playerName) == 0) {
+			countriesByPlayer.push_back(countries[i]);
+		}
+	}
+
+	return countriesByPlayer;
+}
+
+/**
+* getWorldMap
+*
+* Retrieve all countries in the world
+*
+* @return vector<struct>
+*/
 std::vector<Country> *Map::getWorldMap() {
 	return &countries;
 }
 
 /**
- * get
- *
- * Retrieve all information of a country
- *
- * @param countryX - string name of first country
- * @return struct
- */
+* get
+*
+* Retrieve all information of a country
+*
+* @param countryX - string name of first country
+* @return struct
+*/
 Country *Map::get(std::string countryName) {
 
 	// Look for the country with that name
@@ -134,14 +176,14 @@ Country *Map::get(std::string countryName) {
 }
 
 /**
- * isAdjacent
- *
- * Check whether two countries are adjacent
- *
- * @param countryX - string name of first country
- * @param countryY - string name of second country
- * @return boolean
- */
+* isAdjacent
+*
+* Check whether two countries are adjacent
+*
+* @param countryX - string name of first country
+* @param countryY - string name of second country
+* @return boolean
+*/
 bool Map::isAdjacent(std::string countryX, std::string countryY) {
 	// Get id of both countries
 	int countryIdX = getIdOfCountry(countryX);
@@ -151,15 +193,15 @@ bool Map::isAdjacent(std::string countryX, std::string countryY) {
 }
 
 /**
- * addCountry
- *
- * Add country to the world map
- *
- * @param id - index of country in the vector
- * @param countryName - string name of country
- * @param continentName - string name of continent
- * @return void
- */
+* addCountry
+*
+* Add country to the world map
+*
+* @param id - index of country in the vector
+* @param countryName - string name of country
+* @param continentName - string name of continent
+* @return void
+*/
 void Map::addCountry(int id, std::string countryName, std::string continentName, int x, int y) {
 
 	// Add country information
@@ -175,14 +217,14 @@ void Map::addCountry(int id, std::string countryName, std::string continentName,
 }
 
 /**
- * addAdjacency
- *
- * Add connection between two countries
- *
- * @param countryX - string name of country
- * @param adjCountries - array string of adjacent countries
- * @return void
- */
+* addAdjacency
+*
+* Add connection between two countries
+*
+* @param countryX - string name of country
+* @param adjCountries - array string of adjacent countries
+* @return void
+*/
 void Map::addAdjacency(std::string countryX, std::vector<std::string> adjCountries) {
 	// ID of country
 	int countryIdX = getIdOfCountry(countryX);
@@ -198,14 +240,14 @@ void Map::addAdjacency(std::string countryX, std::vector<std::string> adjCountri
 }
 
 /**
- * addPlayerToCountry
- *
- * Include a player to a country
- *
- * @param countryName - string name of country
- * @param playerName - string name of player
- * @return void
- */
+* addPlayerToCountry
+*
+* Include a player to a country
+*
+* @param countryName - string name of country
+* @param playerName - string name of player
+* @return void
+*/
 void Map::addPlayerToCountry(std::string countryName, std::string playerName) {
 	// Loop entire country list to find for the id
 	for (int i = 0; i < countries.size(); i++) {
@@ -216,13 +258,13 @@ void Map::addPlayerToCountry(std::string countryName, std::string playerName) {
 }
 
 /**
- * getIdOfCountry
- *
- * Retrieve id of a country
- *
- * @param countryName - string name of country
- * @return int
- */
+* getIdOfCountry
+*
+* Retrieve id of a country
+*
+* @param countryName - string name of country
+* @return int
+*/
 int Map::getIdOfCountry(std::string countryName) {
 	int idc = 0;
 
@@ -237,19 +279,19 @@ int Map::getIdOfCountry(std::string countryName) {
 }
 
 /**
- * createVector
- *
- * Because the labs are using visual studio 2012 (I use 2013), my code gets a bunch of errors due to compiler incompatibility
- * Please upgrade the Vstudios in the lab. I wasted my time.
- *
- * @param countries - array of strings of countries
- * @return vector<string>
- */
+* createVector
+*
+* Because the labs are using visual studio 2012 (I use 2013), my code gets a bunch of errors due to compiler incompatibility
+* Please upgrade the Vstudios in the lab. I wasted my time.
+*
+* @param countries - array of strings of countries
+* @return vector<string>
+*/
 std::vector<std::string> Map::createVector(std::string countryNames[], int length) {
 	std::vector<std::string> countryList;
-	
+
 	/* sizeof(array)/sizeof(array[0]) didn't work so I used length */
-	for(int i = 0; i < length; i++) {
+	for (int i = 0; i < length; i++) {
 		countryList.push_back(countryNames[i]);
 	}
 
@@ -257,12 +299,12 @@ std::vector<std::string> Map::createVector(std::string countryNames[], int lengt
 }
 
 /**
- * getContinents
- *
- * Retrieve continenets
- *
- * @return vector<string>
- */
+* getContinents
+*
+* Retrieve continenets
+*
+* @return vector<string>
+*/
 std::vector<Map::Continent> Map::getContinents()
 {
 	return continents;

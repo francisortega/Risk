@@ -21,13 +21,11 @@ public:
 	
 
 private:
-	int rollDice();
-	void sortRolls(int& firstRoll, int& secondRoll);
-	void sortRolls(int& firstRoll, int& secondRoll, int& thirdRoll);
-	void winner(Player& player,int DiceUsedbyAttack,Country& attacker, Country& defender);
-	void loser();
-	void status(Country& attacker, Country& defender);
-	int fight(Country& attacker, Country& defender);
-	void blitz(Player& player, Country& attacker, Country& defender);
-	void skirmish(Player& player, Country& attacker, Country& defender);
+	 void sortRolls(int& firstRoll, int& secondRoll, int& thirdRoll);
+	 void winner(Player& player,int DiceUsedbyAttack,Country& attacker, Country& defender);
+	 void loser();
+	 void status(Country& attacker, Country& defender);
+	 int fight(Country& attacker, Country& defender);
+	 void blitz(Player& player, Country& attacker, Country& defender);
+	 void skirmish(Player& player, Country& attacker, Country& defender);
 };

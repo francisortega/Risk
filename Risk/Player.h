@@ -16,15 +16,13 @@ using namespace std;
 
 class Player {
 public:
-	string name;
 	Country countries[10];
 	int armies;
 	Cards playerCard;
 	Player();
 	Player(const Player& orig);
 	virtual ~Player();
-private:
-
+	string name;
 };
 
 #endif	/* PLAYER_H */

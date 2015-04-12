@@ -62,21 +62,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AttackPhase.h" />
     <ClInclude Include="AttackPhase\Battle.h" />
     <ClInclude Include="AttackPhase\Dice.h" />
     <ClInclude Include="Cards\Cards.h" />
     <ClInclude Include="Country.h" />
+    <ClInclude Include="Fortification.h" />
+    <ClInclude Include="GamePlay.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SaveAndLoad.h" />
     <ClInclude Include="StartupPhase.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AttackPhase.cpp" />
     <ClCompile Include="AttackPhase\Battle.cpp" />
     <ClCompile Include="AttackPhase\Dice.cpp" />
     <ClCompile Include="Cards\Cards.cpp" />
     <ClCompile Include="Country.cpp" />
     <ClCompile Include="Driver.cpp" />
+    <ClCompile Include="Fortification.cpp" />
+    <ClCompile Include="GamePlay.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SaveAndLoad.cpp" />

@@ -15,6 +15,12 @@
     <Filter Include="AttackPhase">
       <UniqueIdentifier>{0f465211-5dfb-4594-ac48-1d39735c400d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fortification">
+      <UniqueIdentifier>{50a47602-a0cb-425c-95c8-6f33af0d9408}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlay">
+      <UniqueIdentifier>{3dba1b5e-aa90-40f5-a480-400a8c7e9b36}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Country.h">
@@ -40,6 +46,15 @@
     </ClInclude>
     <ClInclude Include="AttackPhase\Battle.h">
       <Filter>AttackPhase</Filter>
+    </ClInclude>
+    <ClInclude Include="Fortification.h">
+      <Filter>Fortification</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPhase.h">
+      <Filter>AttackPhase</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay.h">
+      <Filter>GamePlay</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +84,15 @@
     </ClCompile>
     <ClCompile Include="AttackPhase\Battle.cpp">
       <Filter>AttackPhase</Filter>
+    </ClCompile>
+    <ClCompile Include="Fortification.cpp">
+      <Filter>Fortification</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPhase.cpp">
+      <Filter>AttackPhase</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay.cpp">
+      <Filter>GamePlay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
