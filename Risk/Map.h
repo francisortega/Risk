@@ -39,7 +39,7 @@ public:
 	/* Methods to retrieve more about the world map */
 	std::vector<Country> getCountriesOfContinents(std::string continentName);
 	std::vector<Country> *getWorldMap();
-	std::vector<Country> getAdjacentCountries(std::string countryName, bool excludeCountriesOfPlayer);
+	std::vector<Country> getAdjacentCountries(std::string countryName, std::string countryType);
 
 	/* Get countries and adjacent countries by a player */
 	std::vector<Country> getCountryList(std::string playerName);

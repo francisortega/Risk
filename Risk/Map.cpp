@@ -40,7 +40,7 @@ bool Map::areContinentsAdjacent(std::string continentX, std::string continentY) 
 
 	// Check each country within continent
 	for (int i = 0; i < countriesCont.size(); i++) {
-		std::vector<Country> adjCountries = getAdjacentCountries(countriesCont[i].getName(), false);
+		std::vector<Country> adjCountries = getAdjacentCountries(countriesCont[i].getName(), "all");
 		//std::cout << "\n" << countriesCont[i].name << ":" << std::endl;
 
 		// Loop through adjacent continents and find whether it is connected to a country from continentY
@@ -87,32 +87,38 @@ std::vector<Country> Map::getCountriesOfContinents(std::string continentName) {
  * Retrieve all adjacent countries
  * 
  * @param countryName - string name of country
- * @param hideCountriesOfPlayer - boolean
+ * @param countryType - choice between "all", "inc" (only player's), "exc" (only enemies')
  * @return vector<struct>
  */
-std::vector<Country> Map::getAdjacentCountries(std::string countryName, bool hideCountriesOfPlayer) {
+std::vector<Country> Map::getAdjacentCountries(std::string countryName, std::string countryType) {
 	int idc = getIdOfCountry(countryName);
 	std::string playerName = countries[idc].getOwner(); // Country object to get player name
+	
 	std::vector<Country> adjCountries;
 
 	// Look in the adjacency matrix for the adjacent countries
 	for (int i = 0; i < countries.size(); i++) {
 		if (adjacentCountries[idc][i] == 1) {
 
-			// Hide player's own countries
-			if(hideCountriesOfPlayer) {
-				// Only include countries that are not owned by player
-				if(countries[i].getOwner().compare(playerName) != 0) {
+			if(countryType.compare("all") == 0) {
+				// Include all countries adjacent to selected country
+				adjCountries.push_back(countries[i]);
+
+			} else if(countryType.compare("inc") == 0) {
+				// Only include countries that ARE OWNED by player
+				if(countries[i].getOwner().compare(playerName) == 0) {
 					adjCountries.push_back(countries[i]);
 				}
 
-			// Include all adjacent countries to selected country
-			} else {
-				adjCountries.push_back(countries[i]);
+			} else if(countryType.compare("exc") == 0) {
+				// Only include countries that ARE NOT OWNED by player
+				if(countries[i].getOwner().compare(playerName) != 0) {
+					adjCountries.push_back(countries[i]);
+				}
 			}
 		}
 	}
-
+	
 	return adjCountries;
 }
 
