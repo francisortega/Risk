@@ -18,7 +18,7 @@
 #include "Player.h"
 #include "StartupPhase.h"
 #include "Map.h"
-#include "Battle.h"
+#include "AttackPhase\Battle.h"
 
 using namespace std;
 
@@ -33,41 +33,16 @@ int main() {
     //at the moment in order to limit the number of countries that need to be used to 
     //run the driver.
     
-    //Additionally players can only stick with their initial country they were assigned
-    //since this we did not need to implement the phases inside the main phase.
-    int numOfPlayers=0;
-    
-        cout << "How many players? (Max 4 players)\n";
-    cin >> numOfPlayers;
-    while (numOfPlayers<=0 || numOfPlayers>4 || !cin.good()){
-        cout << "Enter an integer between 1 and 4\n";
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin >> numOfPlayers;
-    }
-    
-    list<string> playerNames;
 	//initialize the map
 	SaveAndLoad* sl = new SaveAndLoad();
 	Map map;
 	bool t = sl->load(map, "World.map");
 	vector<Country> *world = map.getWorldMap();
-	//Player will be used in future versions
-    //Player players [numOfPlayers];
-     
-    
-	string name;
-    //This is setting the name of each player.
-    for (int i=1; i<=numOfPlayers; i++){
-        cout << "Enter player " << i << " name:\n";
-        cin >> name;
-		playerNames.push_back(name);
-    }
 
     
-   
+	list<Player> players = StartupPhase::setPlayerNames();
     //This methos uses rand to assign a random player to a country.
-    StartupPhase::assignRandomCountry(*world, playerNames, numOfPlayers);
+    StartupPhase::assignRandomCountry(world, &players);
 	
    
 	
@@ -80,7 +55,7 @@ int main() {
 	Battle battle;
 
 	cout << endl << "Let the battle begin!" << endl << endl;
-
+	
 	for (int i = 0; i < worldSize-1; i++){
 		//cout <<	world->at(i).getOwner() << endl;
 		cout << world->at(i).getName() << " will attack " << world->at(i + 1).getName() << endl;

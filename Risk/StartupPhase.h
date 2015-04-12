@@ -10,16 +10,17 @@
 #ifndef STARTUPPHASE_H
 #define	STARTUPPHASE_H
 
-#include "Player.h"
 #include "Country.h"
+#include "Player.h"
 
 class StartupPhase {
 public:
-	void static assignRandomCountry(vector<Country> &world, list<string> playerNames, const int numOfPlayers);
+	void static assignRandomCountry(vector<Country> *world, list<Player> *players);
+	void static initialFortification(vector<Country> *world, list<Player> *players);
+	static list<Player> setPlayerNames();
 	StartupPhase();
 	StartupPhase(const StartupPhase& orig);
 	virtual ~StartupPhase();
-private:
 
 };
 
