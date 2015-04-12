@@ -1,12 +1,12 @@
 /**
- *
- * @author  Francis Ortega 1295578
- * @author  Michal Wozniak 1941097
- * @author  Darren Mau 6057993
- * @author  Francis Cote-Tremblay 6615287
- * @date    03-05-2015
- * @version project v1
- */
+*
+* @author  Francis Ortega 1295578
+* @author  Michal Wozniak 1941097
+* @author  Darren Mau 6057993
+* @author  Francis Cote-Tremblay 6615287
+* @date    03-05-2015
+* @version project v1
+*/
 #include <iostream>
 #include "Country.h"
 #include "Cards\Cards.h"
@@ -16,14 +16,15 @@ using namespace std;
 
 class Player {
 public:
+	Player(string name);
+	virtual ~Player();
+	string getName();
+	void setName(string name);
+	Cards playerCard;
+private:
+	string name;
 	Country countries[10];
 	int armies;
-	Cards playerCard;
-	Player();
-	Player(const Player& orig);
-	virtual ~Player();
-	string name;
 };
 
 #endif	/* PLAYER_H */
-

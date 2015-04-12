@@ -20,7 +20,7 @@ AttackPhase::~AttackPhase()
 void AttackPhase::attackPhaseStart(Player  &player)
 {
 	int answer;
-	cout << "----------------- Attack Phase Start for " << player.name << " -----------------" << endl;
+	cout << "----------------- Attack Phase Start for " << player.getName() << " -----------------" << endl;
 	do{
 		cout << "Do you want to attack? { 0 = YES;  1 = NO }";
 		cin >> answer;
@@ -44,7 +44,7 @@ void AttackPhase::prepareAttack(Player &currentP)
 	vector<Country> adjacentCountries;
 	do{
 		//show list of owned country that can attack 
-		vector<Country> ownedCountryList = currentMap.getCountryList(currentP.name);
+		vector<Country> ownedCountryList = currentMap.getCountryList(currentP.getName());
 		cout << "Choose a country you wish to use for an attack {write country name}" << endl;
 		for (Country country : ownedCountryList)
 		{

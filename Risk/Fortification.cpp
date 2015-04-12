@@ -42,11 +42,11 @@ void Fortification::fortificationStart(Player& player)
 	{
 		cout << "Which country to fortify? " << endl;
 		// function print list of countries
-		vector<Country> listCountries = currentMap.getCountryList(player.name);
+		vector<Country> listCountries = currentMap.getCountryList(player.getName());
 
 		do
 		{
-			cout << "Current list of all country owned by :" << player.name << endl;
+			cout << "Current list of all country owned by :" << player.getName() << endl;
 			cout << "{write the country's name to select it}" << endl;
 
 			for (Country country : listCountries)
