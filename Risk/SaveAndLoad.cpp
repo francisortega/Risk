@@ -1,37 +1,37 @@
 /**
- *
- * @author  Francis Ortega 1295578
- * @author  Michal Wozniak 1941097
- * @author  Darren Mau 6057993
- * @author  Francis Cote-Tremblay 6615287
- * @date    03-05-2015
- * @version project v1
- */
+*
+* @author  Francis Ortega 1295578
+* @author  Michal Wozniak 1941097
+* @author  Darren Mau 6057993
+* @author  Francis Cote-Tremblay 6615287
+* @date    03-05-2015
+* @version project v1
+*/
 #include "SaveAndLoad.h"
 
 
 /**
- * The function will split the string into an array.
- */
+* The function will split the string into an array.
+*/
 
 vector<string> SaveAndLoad::split(string str, char delimiter) {
-  vector<string> internal;
-  stringstream ss(str); // Turn the string into a stream.
-  string tok;
-  
-  while(getline(ss, tok, delimiter)) {
-    internal.push_back(tok);
-  }
-  
-  return internal;
+	vector<string> internal;
+	stringstream ss(str); // Turn the string into a stream.
+	string tok;
+
+	while (getline(ss, tok, delimiter)) {
+		internal.push_back(tok);
+	}
+
+	return internal;
 }
 
 /**
- * The function will load the map and put it in contry and continent class.
- */
-bool SaveAndLoad::load(Map &map,string name)
+* The function will load the map and put it in contry and continent class.
+*/
+bool SaveAndLoad::load(Map &map, string name)
 {
-	
+
 	int id = 0;
 	try
 	{
@@ -46,43 +46,43 @@ bool SaveAndLoad::load(Map &map,string name)
 
 		while (getline(file, str))
 		{
-			
-			if(isContinent == true && str[0] != '[' && str.length() > 0)
+
+			if (isContinent == true && str[0] != '[' && str.length() > 0)
 			{
 				continent = split(str, '=');
 				int num;
-				istringstream ( continent[1] ) >> num;
+				istringstream(continent[1]) >> num;
 				map.addContinents(continent[0], num);
 			}
-			
-			if(isTerritorie == true && str[0] != '[' && str.length() > 0)
+
+			if (isTerritorie == true && str[0] != '[' && str.length() > 0)
 			{
 				territories = split(str, ',');
 				vector<string> country1;
 				name.push_back(territories[0]);
-				for(size_t n=4; n < territories.size(); n++)
+				for (size_t n = 4; n < territories.size(); n++)
 				{
 					country1.push_back(territories[n]);
 				}
 
 				adjCountries.push_back(country1);
-				
-				int x;
-				istringstream ( territories[1] ) >> x;
-				int y;
-				istringstream ( territories[2] ) >> y;
 
-				map.addCountry(id, territories[0], territories[3],x,y);
+				int x;
+				istringstream(territories[1]) >> x;
+				int y;
+				istringstream(territories[2]) >> y;
+
+				map.addCountry(id, territories[0], territories[3], x, y);
 				++id;
 			}
-			if(str[0] == '[')
+			if (str[0] == '[')
 			{
-				if(str == "[Continents]")
+				if (str == "[Continents]")
 				{
 					isContinent = true;
 					isTerritorie = false;
 				}
-				else if(str == "[Territories]")
+				else if (str == "[Territories]")
 				{
 					isContinent = false;
 					isTerritorie = true;
@@ -95,7 +95,7 @@ bool SaveAndLoad::load(Map &map,string name)
 			}
 		}
 
-		for(size_t n=0; n < adjCountries.size(); n++)
+		for (size_t n = 0; n < adjCountries.size(); n++)
 		{
 			map.addAdjacency(name[n], adjCountries[n]);
 		}
@@ -105,24 +105,24 @@ bool SaveAndLoad::load(Map &map,string name)
 		cout << e.what() << '\n';
 		return false;
 	}
-	
-	if(validate(map) == true)
+
+	if (validate(map) == true)
 	{
 		return true;
 	}
 	return false;
-	
+
 }
 
 
 /**
- * The function will get the number of the country.
- */
+* The function will get the number of the country.
+*/
 int SaveAndLoad::getNumber(vector<Country> &countries, string findCountry)
 {
-	for(size_t n=0; n < countries.size(); n++)
+	for (size_t n = 0; n < countries.size(); n++)
 	{
-		if(countries[n].getName() == findCountry)
+		if (countries[n].getName() == findCountry)
 		{
 			return n;
 		}
@@ -131,21 +131,21 @@ int SaveAndLoad::getNumber(vector<Country> &countries, string findCountry)
 }
 
 /*
- *The function will try and visit all the country and set visited to true and if the continent is visited 
- * change the visitedContinent to "".
- */
+*The function will try and visit all the country and set visited to true and if the continent is visited
+* change the visitedContinent to "".
+*/
 
 void SaveAndLoad::visitCountry(Map &map, vector<bool> &visited, vector<Country> &countries, string countryName)
 {
 	//get the number of the country.
 	int num = getNumber(countries, countryName);
 	//check if the country is visited
-	if(visited[num] == false)
+	if (visited[num] == false)
 	{
 		visited[num] = true;
 		//go throught all the country that is connected to the country.
-		vector<Country> adjCountries = map.getAdjacentCountries(countries[num].getName());
-		for(size_t i=0; i < adjCountries.size(); i++)
+		vector<Country> adjCountries = map.getAdjacentCountries(countries[num].getName(), "all");
+		for (size_t i = 0; i < adjCountries.size(); i++)
 		{
 			visitCountry(map, visited, countries, adjCountries[i].getName());
 		}
@@ -153,76 +153,76 @@ void SaveAndLoad::visitCountry(Map &map, vector<bool> &visited, vector<Country> 
 }
 
 /**
- * The function will validate if the country is graph connected and if the continent is subgraph connected.
- */
+* The function will validate if the country is graph connected and if the continent is subgraph connected.
+*/
 bool SaveAndLoad::validate(Map map)
 {
 	vector<bool> visited;
 	//vector<string> visitedContinent;
 	//set visited to false.
 	vector<Country> *countries = map.getWorldMap();
-	for(size_t n=0; n < countries->size(); n++)
+	for (size_t n = 0; n < countries->size(); n++)
 	{
 		visited.push_back(false);
 	}
-	
+
 	visitCountry(map, visited, *countries, countries->at(0).getName());
-	 
+
 	//check if the country is connected graph.
-	for(size_t n=0; n < visited.size(); n++)
+	for (size_t n = 0; n < visited.size(); n++)
 	{
-		if(visited[n] == false)
+		if (visited[n] == false)
 		{
 			return false;
 		}
-		
+
 	}
 
-	
+
 	//check if the country belong to one continent.
 	vector<Map::Continent> continent = map.getContinents();
 	vector<Country> countries1;
 	int num;
-	for(size_t n=0; n < continent.size(); n++)
+	for (size_t n = 0; n < continent.size(); n++)
 	{
 		countries1 = map.getCountriesOfContinents(continent[n].name);
-		for(size_t i = 0; i < countries1.size(); i++)
+		for (size_t i = 0; i < countries1.size(); i++)
 		{
-			num = getNumber(*countries,countries1[i].getName());
-			if(visited[num] == false)
+			num = getNumber(*countries, countries1[i].getName());
+			if (visited[num] == false)
 			{
 				return false;
 			}
 			visited[num] = false;
 		}
 	}
-	
+
 	return true;
 }
 
 /**
- * The function will save the map.
- */
+* The function will save the map.
+*/
 bool SaveAndLoad::save(Map map, string name)
 {
-	if(validate(map) == true)
+	if (validate(map) == true)
 	{
-		ofstream myfile (name + ".map");
+		ofstream myfile(name + ".map");
 		if (myfile.is_open())
 		{
 			myfile << "[Continents]\n";
 			vector<Map::Continent> continents = map.getContinents();
-			for(size_t n=0; n < continents.size(); n++)
+			for (size_t n = 0; n < continents.size(); n++)
 			{
-				myfile << continents[n].name <<"=" <<continents[n].extra << "\n";
+				myfile << continents[n].name << "=" << continents[n].extra << "\n";
 			}
 			myfile << "\n";
 			myfile << "[Territories]\n";
 			vector<Country>* countries = map.getWorldMap();
-			for(size_t n=0; n < countries->size(); n++)
+			for (size_t n = 0; n < countries->size(); n++)
 			{
 				//line break if it is a new continent
-				if(n > 0 && countries->at(n-1).getContinent() != countries->at(n).getContinent())
+				if (n > 0 && countries->at(n - 1).getContinent() != countries->at(n).getContinent())
 				{
 					myfile << "\n";
 				}
@@ -231,20 +231,20 @@ bool SaveAndLoad::save(Map map, string name)
 				myfile << countries->at(n).getX() << ",";
 				myfile << countries->at(n).getY() << ",";
 				myfile << countries->at(n).getContinent() << ",";
-				vector<Country> adjCountries = map.getAdjacentCountries(countries->at(n).getName());
-				for(size_t i=0; i < adjCountries.size() -1; i++)
+				vector<Country> adjCountries = map.getAdjacentCountries(countries->at(n).getName(), "all");
+				for (size_t i = 0; i < adjCountries.size() - 1; i++)
 				{
 					myfile << adjCountries[i].getName() << ",";
 				}
-				myfile << adjCountries[adjCountries.size() -1].getName() << "\n";
+				myfile << adjCountries[adjCountries.size() - 1].getName() << "\n";
 			}
 
 			myfile.close();
 			return true;
 		}
-		else 
+		else
 		{
-			cout << "Unable to open file";	
+			cout << "Unable to open file";
 			return false;
 		}
 	}

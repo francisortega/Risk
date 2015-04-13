@@ -15,7 +15,7 @@
 #include <fstream>
 #include <sstream>
 #include <list>
-#include "Map.h"
+#include "Map/Map.h"
 using namespace std;
 
 class SaveAndLoad

@@ -62,23 +62,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Battle.h" />
-    <ClInclude Include="Country.h" />
-    <ClInclude Include="Dice.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="Cards\Cards.h" />
+    <ClInclude Include="GamePlay\GamePlay.h" />
+    <ClInclude Include="Map\Country.h" />
+    <ClInclude Include="Map\Map.h" />
+    <ClInclude Include="Phases\AttackPhase.h" />
+    <ClInclude Include="Phases\Battle.h" />
+    <ClInclude Include="Phases\Dice.h" />
+    <ClInclude Include="Phases\FortificationPhase.h" />
+    <ClInclude Include="Phases\ReinformentPhase.h" />
+    <ClInclude Include="Phases\StartupPhase.h" />
+    <ClInclude Include="Player\Player.h" />
     <ClInclude Include="SaveAndLoad.h" />
-    <ClInclude Include="StartupPhase.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Battle.cpp" />
-    <ClCompile Include="Country.cpp" />
-    <ClCompile Include="Dice.cpp" />
+    <ClCompile Include="Cards\Cards.cpp" />
     <ClCompile Include="Driver.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="GamePlay\GamePlay.cpp" />
+    <ClCompile Include="Map\Country.cpp" />
+    <ClCompile Include="Map\Map.cpp" />
+    <ClCompile Include="Phases\AttackPhase.cpp" />
+    <ClCompile Include="Phases\Battle.cpp" />
+    <ClCompile Include="Phases\Dice.cpp" />
+    <ClCompile Include="Phases\FortificationPhase.cpp" />
+    <ClCompile Include="Phases\ReinformentPhase.cpp" />
+    <ClCompile Include="Phases\StartupPhase.cpp" />
+    <ClCompile Include="Player\Player.cpp" />
     <ClCompile Include="SaveAndLoad.cpp" />
-    <ClCompile Include="StartupPhase.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

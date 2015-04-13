@@ -9,61 +9,99 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Cards">
+      <UniqueIdentifier>{56e12d75-d15a-478a-ac9b-c5c79e8a7423}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AttackPhase">
-      <UniqueIdentifier>{a0451caa-3382-4dbc-9dc9-f1af5d8d352c}</UniqueIdentifier>
+    <Filter Include="GamePlay">
+      <UniqueIdentifier>{3dba1b5e-aa90-40f5-a480-400a8c7e9b36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Phases">
+      <UniqueIdentifier>{0f465211-5dfb-4594-ac48-1d39735c400d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{b9a4f28d-7ba0-470e-9424-f757201c7dad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{af04f881-06cc-49c3-a965-2b41a9889bd9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Country.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SaveAndLoad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StartupPhase.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Cards\Cards.h">
+      <Filter>Cards</Filter>
     </ClInclude>
-    <ClInclude Include="Battle.h">
-      <Filter>AttackPhase</Filter>
+    <ClInclude Include="Map\Map.h">
+      <Filter>Map</Filter>
     </ClInclude>
-    <ClInclude Include="Dice.h">
-      <Filter>AttackPhase</Filter>
+    <ClInclude Include="Map\Country.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Phases\AttackPhase.h">
+      <Filter>Phases</Filter>
+    </ClInclude>
+    <ClInclude Include="Phases\Battle.h">
+      <Filter>Phases</Filter>
+    </ClInclude>
+    <ClInclude Include="Phases\Dice.h">
+      <Filter>Phases</Filter>
+    </ClInclude>
+    <ClInclude Include="Phases\StartupPhase.h">
+      <Filter>Phases</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\GamePlay.h">
+      <Filter>GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="Phases\ReinformentPhase.h">
+      <Filter>Phases</Filter>
+    </ClInclude>
+    <ClInclude Include="Phases\FortificationPhase.h">
+      <Filter>Phases</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Country.cpp">
+    <ClCompile Include="SaveAndLoad.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cards\Cards.cpp">
+      <Filter>Cards</Filter>
     </ClCompile>
     <ClCompile Include="Driver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Map\Map.cpp">
+      <Filter>Map</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Map\Country.cpp">
+      <Filter>Map</Filter>
     </ClCompile>
-    <ClCompile Include="SaveAndLoad.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Phases\Battle.cpp">
+      <Filter>Phases</Filter>
     </ClCompile>
-    <ClCompile Include="StartupPhase.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Phases\Dice.cpp">
+      <Filter>Phases</Filter>
     </ClCompile>
-    <ClCompile Include="Battle.cpp">
-      <Filter>AttackPhase</Filter>
+    <ClCompile Include="Phases\StartupPhase.cpp">
+      <Filter>Phases</Filter>
     </ClCompile>
-    <ClCompile Include="Dice.cpp">
-      <Filter>AttackPhase</Filter>
+    <ClCompile Include="Phases\AttackPhase.cpp">
+      <Filter>Phases</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Player.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay\GamePlay.cpp">
+      <Filter>GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="Phases\ReinformentPhase.cpp">
+      <Filter>Phases</Filter>
+    </ClCompile>
+    <ClCompile Include="Phases\FortificationPhase.cpp">
+      <Filter>Phases</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
