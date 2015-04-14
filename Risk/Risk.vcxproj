@@ -18,7 +18,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -63,7 +63,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Cards\Cards.h" />
+    <ClInclude Include="Editor\MapEditor.h" />
     <ClInclude Include="GamePlay\GamePlay.h" />
+    <ClInclude Include="Game\Director.h" />
+    <ClInclude Include="Game\Game.h" />
+    <ClInclude Include="Game\GameBuilder.h" />
+    <ClInclude Include="Game\RiskGameBuilder.h" />
     <ClInclude Include="Map\Country.h" />
     <ClInclude Include="Map\Map.h" />
     <ClInclude Include="Phases\AttackPhase.h" />
@@ -78,7 +83,12 @@
   <ItemGroup>
     <ClCompile Include="Cards\Cards.cpp" />
     <ClCompile Include="Driver.cpp" />
+    <ClCompile Include="Editor\MapEditor.cpp" />
     <ClCompile Include="GamePlay\GamePlay.cpp" />
+    <ClCompile Include="Game\Director.cpp" />
+    <ClCompile Include="Game\Game.cpp" />
+    <ClCompile Include="Game\GameBuilder.cpp" />
+    <ClCompile Include="Game\RiskGameBuilder.cpp" />
     <ClCompile Include="Map\Country.cpp" />
     <ClCompile Include="Map\Map.cpp" />
     <ClCompile Include="Phases\AttackPhase.cpp" />

@@ -24,6 +24,12 @@
     <Filter Include="Player">
       <UniqueIdentifier>{af04f881-06cc-49c3-a965-2b41a9889bd9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{a5de266c-58b6-49ee-88d3-7e4761ddd366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor">
+      <UniqueIdentifier>{17b8072f-ccc3-433e-b1c9-f7fb9b216ee1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SaveAndLoad.h">
@@ -61,6 +67,21 @@
     </ClInclude>
     <ClInclude Include="Phases\FortificationPhase.h">
       <Filter>Phases</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameBuilder.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\RiskGameBuilder.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Director.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor\MapEditor.h">
+      <Filter>Editor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +123,21 @@
     </ClCompile>
     <ClCompile Include="Phases\FortificationPhase.cpp">
       <Filter>Phases</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameBuilder.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\RiskGameBuilder.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Director.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Editor\MapEditor.cpp">
+      <Filter>Editor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

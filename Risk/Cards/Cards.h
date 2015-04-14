@@ -30,6 +30,9 @@ public:
 	void verifyTradeInPosibility();
 	//get the value of the future card trade in; How much army you will get for your exchange
 	int getNextCardTradeInArmyValue();
+
+	list<cardType>* getCardList();
+	void setCardList(list<cardType> cardList);
 	/*
 
 	Earning Cards. At the end of any turn in which you have captured at

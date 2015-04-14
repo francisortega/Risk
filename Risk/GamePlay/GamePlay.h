@@ -12,11 +12,18 @@ public:
 	~GamePlay();
 
 	deque <Player*> playerRoundLoop;
+	//set the list of player.
+	void setPlayers(vector<Player*>* players);
+	// return the list of player.
+	vector<Player*>* getPlayers();
+	int getPlayerTurn();
+	void setPlayerTurn(int playerTurn);
 private :
-	int turnCounter= 1;
-	bool gameOver = false; // when one user remain
+	int turnCounter;
+	int playerTurn;
+	bool gameOver; // when one user remain
 	int nbOfPlayer;
-
+	vector<Player*>* players;
 	vector<Country> *world;
 
 

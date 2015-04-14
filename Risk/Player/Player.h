@@ -16,13 +16,20 @@ using namespace std;
 
 class Player {
 public:
+	Player();
 	Player(string name);
 	virtual ~Player();
 	string getName();
 	void setName(string name);
 	Cards playerCard;
+	Cards* getCards();
+	void setCards(Cards* cards);
+	string getComputer();
+	void setComputer(string computer);
 private:
 	string name;
+	string computer;
+	Cards* cards;
 	Country countries[10];
 	int armies;
 };
