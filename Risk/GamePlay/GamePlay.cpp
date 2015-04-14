@@ -3,6 +3,8 @@
 
 GamePlay::GamePlay()
 {
+	turnCounter= 1;
+	gameOver = false;
 	//initialize the map
 	SaveAndLoad* sl = new SaveAndLoad();
 	Map map;
@@ -28,4 +30,30 @@ void GamePlay::gameFlow()
 
 
 
+}
+
+/**
+ * set the list of player.
+ */
+void GamePlay::setPlayers(vector<Player*>* players)
+{
+	this->players = players;
+}
+
+/**
+ * return the list of player.
+ */
+vector<Player*>* GamePlay::getPlayers()
+{
+	return this->players;
+}
+
+int GamePlay::getPlayerTurn()
+{
+	return playerTurn;
+}
+
+void GamePlay::setPlayerTurn(int playerTurn)
+{
+	this->playerTurn = playerTurn;
 }

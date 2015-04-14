@@ -22,13 +22,13 @@ class SaveAndLoad
 {
 	private:
 		Map map;
+		int getPosition(vector<Country> &countries, string findCountry);
+		void visitCountry(Map &map, vector<bool> &visited, vector<Country> &countries, string countryName);
 
 	public:
 		bool load(Map &map, string name);
-		vector<string> split(string str, char delimiter);
+		static vector<string> split(string str, char delimiter);
 		bool validate(Map map);
-		void visitCountry(Map &map, vector<bool> &visited, vector<Country> &countries, string countryName);
-		int getNumber(vector<Country> &countries, string findCountry);
 		bool save(Map map, string name);
 };
 

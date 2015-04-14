@@ -9,10 +9,15 @@
 */
 #include "Player.h"
 
+Player::Player()
+{
+	this->cards = new Cards();
+}
 
 Player::Player(string name)
 {
 	this->name = name;
+	this->cards = new Cards();
 }
 
 
@@ -26,4 +31,23 @@ void Player::setName(string name){
 
 string Player::getName(){
 	return this->name;
+}
+
+Cards* Player:: getCards()
+{
+	return cards;
+}
+
+void Player::setCards(Cards* cards)
+{
+	this->cards = cards;
+}
+string Player::getComputer()
+{
+	return computer;
+}
+
+void Player::setComputer(string computer)
+{
+	this->computer = computer;
 }

@@ -68,11 +68,8 @@ int Cards::getNextCardTradeInArmyValue()
 
 Cards::cardType Cards::createCard()
 {
-	//intialize random seed
-	 srand(time(NULL));
-
 	 //random -> range [1,3]
-	 int random = (1 + rand() % 3);
+	 int random = (rand() % 3);
 
 	 
 	 //cardType type = cardType::INFANTRY;
@@ -86,7 +83,7 @@ Cards::cardType Cards::createCard()
 	 case 1:	card = CAVALRY;
 		 cout << "You have draw a Cavalry card " << endl;
 		 break;
-	 case 2:	card = ARTILLERY;;
+	 default:	card = ARTILLERY;;
 		 cout << "You have draw a Artillery card " << endl;
 	 }
 
@@ -229,4 +226,14 @@ bool Cards::isTradeInPossibleNow()
 bool Cards::mustTradeInNow()
 {
 	return this->mustTradeIn;
+}
+
+list<Cards::cardType>* Cards::getCardList()
+{
+	return &cardList;
+}
+
+void Cards::setCardList(list<cardType> cardList)
+{
+	this->cardList = cardList;
 }

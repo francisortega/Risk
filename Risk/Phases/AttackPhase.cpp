@@ -20,7 +20,7 @@ AttackPhase::~AttackPhase()
 void AttackPhase::attackPhaseStart(Player  &player)
 {
 	int answer;
-	cout << "----------------- Attack Phase Start for " << player.getName() << " -----------------" << endl;
+	cout << "----------------- Attack Phase Start for " << player.getName() << " -----------------\n" << endl;
 	do{
 		cout << "Do you want to attack? { 0 = YES;  1 = NO }";
 		cin >> answer;
@@ -46,9 +46,15 @@ void AttackPhase::prepareAttack(Player &currentP)
 		//show list of owned country that can attack 
 		vector<Country> ownedCountryList = currentMap->getCountryList(currentP.getName());
 		cout << "Choose a country you wish to use for an attack {write country name}" << endl;
+		cout << "----------- {Only country with attack power bigger than 1 can attack} ----------------\n" << endl;
 		for (Country country : ownedCountryList)
 		{
-			cout << country.getName() <<" - army power : " << country.getArmy() << endl;
+			//country with less than 2 army cannot attack
+			if (country.getArmy() > 1)
+			{
+				cout << country.getName() << " - army power : " << country.getArmy() << endl;
+			}
+			
 		}
 		cin >> selectedCountry; //selected country name
 		//show list of ennemi adjacent country
@@ -57,6 +63,7 @@ void AttackPhase::prepareAttack(Player &currentP)
 
 	do{
 		cout << "Which adjacent country do you wish to attack {write enemy country name}" << endl;
+		cout << "-----------------------------------------------------------------------\n"  << endl;
 		for (Country countryEnemy : adjacentCountries)
 		{
 			cout << countryEnemy.getName() << "- army power : " << countryEnemy.getArmy() << endl;
