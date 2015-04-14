@@ -15,13 +15,18 @@
 #include <list>
 #include <stdlib.h>
 #include "SaveAndLoad.h"
-#include "Player/Player.h"
-#include "Phases/StartupPhase.h"
-#include "Map/Map.h"
+#include "Player\Player.h"
+#include "Phases\StartupPhase.h"
+#include "Map\Map.h"
 #include "Phases\Battle.h"
 #include "Phases\AttackPhase.h"
 #include "Phases\ReinformentPhase.h"
-#include "Phases/FortificationPhase.h"
+#include "Phases\FortificationPhase.h"
+#include "Statistics\PlayerView.h"
+#include "Statistics\ArmiesPercentage.h"
+#include "Statistics\CountriesPercentage.h"
+#include "Statistics\ArmiesStats.h"
+#include "Statistics\CountriesStats.h"
 
 using namespace std;
 
@@ -57,14 +62,14 @@ int main() {
 	int worldSize = world->size();
 	Battle battle;
 
+	//create playerNames list for the observer-decorator
+	list<string> playerNames;
+	for (Player player : players){
+		playerNames.push_back(player.getName());
+	}
+
+
 	cout << endl << "Let the battle begin!" << endl << endl;
-
-	/*for (int i = 0; i < worldSize - 1; i++){
-		//cout <<	world->at(i).getOwner() << endl;
-		cout << world->at(i).getName() << " will attack " << world->at(i + 1).getName() << endl;
-		battle.war(, world->at(i), world->at(i + 1));
-
-	}*/
 
 	AttackPhase *attackPhase = new AttackPhase(&map);
 	ReinforcementPhase *reinforcePhase = new ReinforcementPhase(&map);
@@ -74,6 +79,33 @@ int main() {
 		reinforcePhase->reinforcementStart(player);
 		attackPhase->attackPhaseStart(player);
 		fortifyPhase->fortificationStart(player);
+
+
+		cout << "observer-decorator part" << endl;
+		//the undecorated statistics is only "The statistics are:"
+		PlayerView *pv = new PlayerView();
+		pv->stat->attach(pv);
+		//adding first decorator
+		pv->stat->detach(pv);
+		pv->stat = new ArmiesStats(pv->stat);
+		pv->stat->attach(pv);
+		pv->stat->getStats(world, playerNames);
+		//adding second decorator
+		pv->stat->detach(pv);
+		pv->stat = new ArmiesPercentage(pv->stat);
+		pv->stat->attach(pv);
+		pv->stat->getStats(world, playerNames);
+		//adding third decorator
+		pv->stat->detach(pv);
+		pv->stat = new CountriesStats(pv->stat);
+		pv->stat->attach(pv);
+		pv->stat->getStats(world, playerNames);
+		//adding fourth decorator
+		pv->stat->detach(pv);
+		pv->stat = new CountriesPercentage(pv->stat);
+		pv->stat->attach(pv);
+		pv->stat->getStats(world, playerNames);
+
 	}
 	system("pause");
 

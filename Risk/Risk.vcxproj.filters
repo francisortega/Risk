@@ -24,6 +24,9 @@
     <Filter Include="Player">
       <UniqueIdentifier>{af04f881-06cc-49c3-a965-2b41a9889bd9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Statistics">
+      <UniqueIdentifier>{4372f79b-d7a6-416d-afc1-9514b4e12d1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SaveAndLoad.h">
@@ -61,6 +64,36 @@
     </ClInclude>
     <ClInclude Include="Phases\FortificationPhase.h">
       <Filter>Phases</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\ArmiesPercentage.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\ArmiesStats.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\BasicStats.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\CountriesPercentage.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\CountriesStats.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\Observable.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\Observer.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\PlayerView.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\StatDecorator.h">
+      <Filter>Statistics</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics\Statistics.h">
+      <Filter>Statistics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +135,36 @@
     </ClCompile>
     <ClCompile Include="Phases\FortificationPhase.cpp">
       <Filter>Phases</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\ArmiesPercentage.cpp">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\ArmiesStats.cpp">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\BasicStats.cpp">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\CountriesPercentage.cpp">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\CountriesStats.cpp">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\Observable.cpp">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\Observer.cpp">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\PlayerView.cpp">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\StatDecorator.cpp">
+      <Filter>Statistics</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics\Statistics.cpp">
+      <Filter>Statistics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

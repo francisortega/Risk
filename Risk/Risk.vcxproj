@@ -74,6 +74,16 @@
     <ClInclude Include="Phases\StartupPhase.h" />
     <ClInclude Include="Player\Player.h" />
     <ClInclude Include="SaveAndLoad.h" />
+    <ClInclude Include="Statistics\ArmiesPercentage.h" />
+    <ClInclude Include="Statistics\ArmiesStats.h" />
+    <ClInclude Include="Statistics\BasicStats.h" />
+    <ClInclude Include="Statistics\CountriesPercentage.h" />
+    <ClInclude Include="Statistics\CountriesStats.h" />
+    <ClInclude Include="Statistics\Observable.h" />
+    <ClInclude Include="Statistics\Observer.h" />
+    <ClInclude Include="Statistics\PlayerView.h" />
+    <ClInclude Include="Statistics\StatDecorator.h" />
+    <ClInclude Include="Statistics\Statistics.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cards\Cards.cpp" />
@@ -89,6 +99,16 @@
     <ClCompile Include="Phases\StartupPhase.cpp" />
     <ClCompile Include="Player\Player.cpp" />
     <ClCompile Include="SaveAndLoad.cpp" />
+    <ClCompile Include="Statistics\ArmiesPercentage.cpp" />
+    <ClCompile Include="Statistics\ArmiesStats.cpp" />
+    <ClCompile Include="Statistics\BasicStats.cpp" />
+    <ClCompile Include="Statistics\CountriesPercentage.cpp" />
+    <ClCompile Include="Statistics\CountriesStats.cpp" />
+    <ClCompile Include="Statistics\Observable.cpp" />
+    <ClCompile Include="Statistics\Observer.cpp" />
+    <ClCompile Include="Statistics\PlayerView.cpp" />
+    <ClCompile Include="Statistics\StatDecorator.cpp" />
+    <ClCompile Include="Statistics\Statistics.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
