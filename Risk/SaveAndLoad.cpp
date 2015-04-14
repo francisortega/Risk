@@ -6,6 +6,9 @@
  * @author  Francis Cote-Tremblay 6615287
  */
 #include "SaveAndLoad.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 
 /**
@@ -33,6 +36,7 @@ bool SaveAndLoad::load(Map &map,string name)
 	try
 	{
 		ifstream file(name);
+		file.exceptions ( std::ifstream::failbit | std::ifstream::badbit );
 		string str;
 		bool isContinent = false;
 		bool isTerritorie = false;
@@ -96,16 +100,21 @@ bool SaveAndLoad::load(Map &map,string name)
 				map.addAdjacency(name[n], adjCountries[n]);
 			}
 		}
+		if(validate(map) == true)
+		{
+			return true;
+		}
 	}
+	catch (std::ifstream::failure e) 
+	{
+		cerr << "Exception opening/reading/closing file\n";
+		return false;
+	}
+
 	catch (exception& e)
 	{
 		cout << e.what() << '\n';
 		return false;
-	}
-	
-	if(validate(map) == true)
-	{
-		return true;
 	}
 	return false;
 	

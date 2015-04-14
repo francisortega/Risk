@@ -12,8 +12,7 @@ bool MapEditor::createMap(Map &map,string choose, string name)
 	case 1: createContinent(map);
 		break;
 	//get map from file.
-	case 2: s.load(map, name);
-		break;
+	case 2: return s.load(map, name);
 	}
 
 	//return true if map is valide.
@@ -42,8 +41,13 @@ void MapEditor::createContinent(Map &map)
 		cout << "New continent name: ";
 		getline(cin, cont);
 		cout << "Extra army number: ";
-		cin >> temp1;
-		istringstream (temp1 ) >> num;
+		cin >> num;
+		while (!cin) {
+			cout << "ERROR, enter a number: \n" ;
+			cin.clear();
+			cin.ignore(256,'\n');
+			cin >> num;
+		}
 		map.addContinents(cont,num);
 		temp = answer("Continent");
 	}while (temp != "N" && temp != "n");
