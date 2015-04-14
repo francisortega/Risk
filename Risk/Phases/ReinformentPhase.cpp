@@ -109,6 +109,9 @@ int ReinforcementPhase::consumeCards(Player &player)
 				return 0;
 		}
 	}
+	else
+		return 0;
+	
 }
 
 int ReinforcementPhase::cardSelection(Cards playerCards)

@@ -21,21 +21,21 @@
 #include "Phases\Battle.h"
 #include "Phases\AttackPhase.h"
 #include "Phases\ReinformentPhase.h"
-<<<<<<< HEAD
+//<<<<<<< HEAD
 #include "Phases\FortificationPhase.h"
 #include "Statistics\PlayerView.h"
 #include "Statistics\ArmiesPercentage.h"
 #include "Statistics\CountriesPercentage.h"
 #include "Statistics\ArmiesStats.h"
 #include "Statistics\CountriesStats.h"
-=======
+//=======
 #include "Phases/FortificationPhase.h"
 #include "Game\Director.h"
 #include "Game\Game.h"
 #include "Game\GameBuilder.h"
 #include "Game\RiskGameBuilder.h"
 #include "Editor\MapEditor.h"
->>>>>>> 93b925561f2ff73cd684287cdadbd57b85c5c51e
+//>>>>>>> 93b925561f2ff73cd684287cdadbd57b85c5c51e
 
 using namespace std;
 
@@ -104,13 +104,13 @@ int main() {
 	AttackPhase *attackPhase = new AttackPhase(&map);
 	ReinforcementPhase *reinforcePhase = new ReinforcementPhase(&map);
 	Fortification *fortifyPhase = new Fortification(&map);
-	/*
+	
 	for (Player player : players){
 		reinforcePhase->reinforcementStart(player);
 		attackPhase->attackPhaseStart(player);
 		fortifyPhase->fortificationStart(player);
 
-
+		
 		cout << "observer-decorator part" << endl;
 		//the undecorated statistics is only "The statistics are:"
 		PlayerView *pv = new PlayerView();
@@ -137,7 +137,9 @@ int main() {
 		pv->stat->getStats(world, playerNames);
 
 	}
-	*/
+	
+
+	/*
 	// Save Game
 	GamePlay gameTurn;
 	vector<Player*>* pl = new vector<Player*>;
@@ -178,6 +180,7 @@ int main() {
 		delete pl->at(i);
 	}
 	delete risk;
+	*/
 	system("pause");
 
 

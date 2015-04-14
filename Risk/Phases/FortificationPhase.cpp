@@ -33,59 +33,91 @@ void Fortification::fortificationSetup(Player& player)
 
 void Fortification::fortificationStart(Player& player)
 {
-	string countryToFortify, countryFortifyFrom;
+	string countryToFortify = "test";
+	string countryFortifyFrom;
 	Country *fortifyThisCountry;
 
 	cout << "----------------- Fortification Phase Start  -----------------" << endl;
 
 	
-	do
-	{
+	
+	
 		cout << "Which country to fortify? " << endl;
 		cout << "-------------------------------------------------" << endl;
 		// function print list of countries
 		vector<Country> listCountries = currentMap->getCountryList(player.getName());
-
+		int printedCountries = 0;
 		do
 		{
 			cout << "Current list of all country owned by :" << player.getName() << endl;
 			cout << "{write the country's name to select it}" << endl;
 			cout << "----------------------------------------------\n " << endl;
+
 			for (Country country : listCountries)
 			{
-				cout << country.getName() << " army power:" << country.getArmy() << endl;
+
+				Country *fortifyThisCountry = currentMap->get(country.getName());
+				//show only countries that be fortified  --> one owned countries has a adjacent countries that has more than 1 army
+				if (isFortifyPossible(*fortifyThisCountry))
+				{
+					cout << country.getName() << " army power:" << country.getArmy() << endl;
+					printedCountries++;
+				}
+
 			}
-			cin >> countryToFortify;
-		} while (currentMap->get(countryToFortify) == NULL); // if incorrect name ask again
-
-
-		fortifyThisCountry = currentMap->get(countryToFortify);
-		
-	} while (!isFortifyPossible(*fortifyThisCountry));  //if possible then exit loop else repeat
-	
-
-	do{
-		//print list of possible country that we can fortify from 
-		cout << "From which country do you want to fortify? Only the countries with more 1 army are listed { select one country}" << endl;
-		vector<Country> countryListfrom = currentMap->getAdjacentCountries(countryToFortify,"inc");// inc = only player countrys
-		//show only the one that have more than 1 army
-		for (Country country : countryListfrom)
-		{
-			if (country.getArmy() > 1)
+			if (printedCountries > 0)
 			{
-				cout << country.getName() << "- army power : " << country.getArmy() << endl;
+				cin >> countryToFortify;
+				//error handling test 
+				/*if (currentMap->get(countryToFortify) == NULL)
+				{
+					cout << "error" << endl; 
+				}
+				else
+				{
+					cout << "good country" << endl;
+				}*/
 			}
+		
+		} while (currentMap->get(countryToFortify) == NULL); // if incorrect name ask again ; if no possible countreis exit 
+
+
+		
+
+		//}// while (!isFortifyPossible(*fortifyThisCountry));  //if possible then exit loop else repeat
+
+		// only ask if there was a possible country to fortify
+		if (printedCountries != 0)
+		{
+			fortifyThisCountry = currentMap->get(countryToFortify);
+			do{
+				//print list of possible country that we can fortify from 
+				cout << "From which country do you want to fortify? Only the countries with more 1 army are listed { select one country}" << endl;
+				vector<Country> countryListfrom = currentMap->getAdjacentCountries(countryToFortify, "inc");// inc = only player countrys
+				//show only the one that have more than 1 army
+				for (Country country : countryListfrom)
+				{
+					if (country.getArmy() > 1)
+					{
+						cout << country.getName() << "- army power : " << country.getArmy() << endl;
+					}
+				}
+				cin >> countryFortifyFrom;
+			} while (currentMap->get(countryFortifyFrom) == NULL);
+
+
+			// will take army from this country
+			Country *from = currentMap->get(countryFortifyFrom);
+
+
+			fortify(*from, *fortifyThisCountry);
 		}
-		cin >> countryFortifyFrom;
-	} while (currentMap->get(countryToFortify) == NULL);
+		else
+		{
+			cout << "there are no countries available to fortify" << endl;
+		}
+
 	
-
-	// will take army from this country
-	Country *from = currentMap->get(countryFortifyFrom);
-
-
-	fortify(*from, *fortifyThisCountry);
-
 }
 
 //function that check if adjacent allied countries have more than 1 soldier 
@@ -123,7 +155,7 @@ int Fortification::transfert(Country &from)
 		cout << "Number of availaible army : " << availaibleArmy << endl;
 		cout << "How many army do wish to transfert ?  " << endl;
 		cin >> armyMoved;
-	} while (armyMoved > availaibleArmy || armyMoved < availaibleArmy);
+	} while (armyMoved > availaibleArmy || armyMoved < 1);
 
 	return armyMoved;
 }

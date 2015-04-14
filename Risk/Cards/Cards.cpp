@@ -195,7 +195,7 @@ void Cards::doTradeIn(int card1, int card2, int card3)
 void Cards::viewCardsList()
 {
 	//counter
-	int infantry, cavalry, artillery =0;
+	int infantry=0, cavalry=0, artillery =0;
 
 	cout << "You have these card in your posession : " << endl;
 
