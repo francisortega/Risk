@@ -95,8 +95,8 @@ void StartupPhase::initialFortification(list<Player> *players){
 				int inputArmies = 0;
 
 				do {
-					cout << "Notice: You have " << nbOfArmiesAvailable << " armies left and " << countriesLeftToSet << "countries left to assign armies" << endl;
-					cout << "Please enter how many armies to assign to " << world->at(i).getName() << ": " << endl;
+					cout << "\nNotice: Armies left: " << nbOfArmiesAvailable << ", Countries left: " << countriesLeftToSet << endl;
+					cout << "Number of armies to assign to " << world->at(i).getName() << ": " << endl;
 					cin >> inputArmies;
 					conditionBroken = false;
 					if (inputArmies > nbOfArmiesAvailable){
@@ -173,12 +173,19 @@ void StartupPhase::assignRandomCountry(list<Player> *players){
 	}
 
 	cout << "Here are the countries and their assigned players:\n";
-	cout << "NOTE: if the numOfCountries is not divisible by the numOfPlayers, the rest will not be assigned. ex: 42 is not divisible by 4 players, therefore there will be 2 contries left unassigned and ready to be conquered by anyone" << endl << endl;
-	for (int i = 0; i<numOfCountries; i++)
+	cout << "NOTE: if the numOfCountries is not divisible by the numOfPlayers, the rest will not be assigned. " <<
+				"\nex: 42 is not divisible by 4 players, therefore there will be 2 contries left unassigned " <<
+				"and ready to be conquered by anyone" << endl << endl;
+	
+	// Display player and newly acquired countries
+	for (list<Player>::iterator pl = players->begin(); pl != players->end(); pl++) {
+		cout << (*pl).getName() << " owns the ff. countries: " << endl;
 
-	{
+		vector<Country> countryList = currentMap->getCountryList((*pl).getName());
+		for (vector<Country>::iterator ct = countryList.begin(); ct != countryList.end(); ct++) {
+			cout << "\t" << (*ct).getName() << endl;
+		}
 
-		cout << world->at(i).getName() << ": " << world->at(i).getOwner() << endl;
-
+		cout << "\n";
 	}
 }
