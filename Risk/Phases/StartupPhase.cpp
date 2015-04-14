@@ -4,8 +4,6 @@
 * @author  Michal Wozniak 1941097
 * @author  Darren Mau 6057993
 * @author  Francis Cote-Tremblay 6615287
-* @date    03-05-2015
-* @version project v1
 */
 
 #include <string>
@@ -95,7 +93,7 @@ void StartupPhase::initialFortification(list<Player> *players){
 				int inputArmies = 0;
 
 				do {
-					cout << "Notice: You have " << nbOfArmiesAvailable << " armies left and " << countriesLeftToSet << "countries left to assign armies" << endl;
+					cout << "Notice: You have " << nbOfArmiesAvailable << " armies left and " << countriesLeftToSet << " countries left to assign armies" << endl;
 					cout << "Please enter how many armies to assign to " << world->at(i).getName() << ": " << endl;
 					cin >> inputArmies;
 					conditionBroken = false;
@@ -134,42 +132,42 @@ void StartupPhase::assignRandomCountry(list<Player> *players){
 	cout << "Players are now being assigned random a country" << endl;
 
 	int i = 0;
-	int j = 0;
 
 	int numOfCountries = world->size();
-
+	
+	//in order not to modify players, We create a list<string> with only the playerNames
+	list<string> playerNames = createPlayerNames(players);
 	//if the numOfCountries is not divisible by the numOfPlayers, the rest will not be assigned. ex: 42 is not divisible by 4 players, therefore there will be 2 contries left unassigned
+	list<string> playerCopy(playerNames);
+	while (i < numOfCountries ){	
 
-	//numOfCountries-numOfPlayers because in the second while loop the index is given by i + j
-	while (i <= numOfCountries - numOfPlayers){
-		list<Player> playerCopy(*players);
-		j = 0;
-		while (j < numOfPlayers){
-
-			if (playerCopy.size() != 0){
+		if (playerCopy.size() == 0){
+			for (string player : playerNames){
+				playerCopy.push_back(player);
+			}
+		}
 				//generate random number
 				srand(time(NULL));
 				int randomSelection = rand() % playerCopy.size();
 
-				list<Player>::iterator it = playerCopy.begin();
+				list<string>::iterator it = playerCopy.begin();
 				//move the it pointer to the "randomSelection"Nth
 				advance(it, randomSelection);
 				//the value of it contains a player name
 
-				string countryName = world->at(i + j).getName();
+				string countryName = world->at(i).getName();
 				cout << "This country is being assigned a player: " << countryName << endl;
 
 				//the iteration work with the numOfPlayers. for example, if 4 players, then it will assign players to the first 4 country, then to the 5-8 countries, then 9-12, etc
-				world->at(i + j).setOwner((it->getName())); ///ERROR HERE (*it) need to change stuff in country in map 
+				world->at(i).setOwner((*it)); ///ERROR HERE (*it) need to change stuff in country in map 
 				//world->at(i + j).setArmy(10);
 
 				//after the player name is added, it is deleted from the playerCopy in order avoid searching through the array
 
 				playerCopy.erase(it);
-			}
-			j++;
-		}
-		i = i + numOfPlayers;
+			
+		
+		++i;
 	}
 
 	cout << "Here are the countries and their assigned players:\n";
@@ -181,4 +179,13 @@ void StartupPhase::assignRandomCountry(list<Player> *players){
 		cout << world->at(i).getName() << ": " << world->at(i).getOwner() << endl;
 
 	}
+}
+
+
+list<string> StartupPhase::createPlayerNames(list<Player> *players){
+	list<string> playerNames;
+	for (Player player : *players){
+		playerNames.push_back(player.getName());
+	}
+	return playerNames;
 }

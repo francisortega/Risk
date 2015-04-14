@@ -4,8 +4,6 @@
 * @author  Michal Wozniak 1941097
 * @author  Darren Mau 6057993
 * @author  Francis Cote-Tremblay 6615287
-* @date    03-05-2015
-* @version project v1
 */
 #ifndef STARTUPPHASE_H
 #define	STARTUPPHASE_H
@@ -18,6 +16,7 @@ class StartupPhase {
 public:
 	void assignRandomCountry(list<Player> *players);
 	void initialFortification(list<Player> *players);
+	list<string> createPlayerNames(list<Player> *players);
     list<Player> setPlayerNames();
 	StartupPhase(Map *map);
 	StartupPhase(const StartupPhase& orig);

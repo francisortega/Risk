@@ -1,11 +1,9 @@
 /**
-*
 * @author  Francis Ortega 1295578
 * @author  Michal Wozniak 1941097
 * @author  Darren Mau 6057993
 * @author  Francis Cote-Tremblay 6615287
 * @date    03-05-2015
-* @version project v1
 */
 #include <cstdlib>
 #include <iostream>
@@ -21,21 +19,18 @@
 #include "Phases\Battle.h"
 #include "Phases\AttackPhase.h"
 #include "Phases\ReinformentPhase.h"
-//<<<<<<< HEAD
 #include "Phases\FortificationPhase.h"
 #include "Statistics\PlayerView.h"
 #include "Statistics\ArmiesPercentage.h"
 #include "Statistics\CountriesPercentage.h"
 #include "Statistics\ArmiesStats.h"
 #include "Statistics\CountriesStats.h"
-//=======
 #include "Phases/FortificationPhase.h"
 #include "Game\Director.h"
 #include "Game\Game.h"
 #include "Game\GameBuilder.h"
 #include "Game\RiskGameBuilder.h"
 #include "Editor\MapEditor.h"
-//>>>>>>> 93b925561f2ff73cd684287cdadbd57b85c5c51e
 
 using namespace std;
 
