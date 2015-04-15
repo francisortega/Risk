@@ -154,10 +154,8 @@ int main() {
 			list<Player> playerNames = players;
 			while(playerNames.size() != 0)
 			{
-				string name = playerNames.front().getName();
+				Player* p = &playerNames.front();
 				playerNames.pop_front();
-				Player* p = new Player();
-				p->setName(name);
 				pl->push_back(p);
 			}
 			gameTurn.setPlayers(pl);
