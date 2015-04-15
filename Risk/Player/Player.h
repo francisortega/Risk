@@ -15,7 +15,7 @@ using namespace std;
 class Player {
 public:
 	Player();
-	Player(string name);
+	Player(string name, int id);
 	virtual ~Player();
 	string getName();
 	void setName(string name);
@@ -24,12 +24,15 @@ public:
 	void setCards(Cards* cards);
 	string getComputer();
 	void setComputer(string computer);
+	void setId(int id);
+	int getId();
 private:
 	string name;
 	string computer;
 	Cards* cards;
 	Country countries[10];
 	int armies;
+	int id;
 };
 
 #endif	/* PLAYER_H */

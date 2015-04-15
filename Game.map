@@ -1,0 +1,63 @@
+[Continents]
+North America=5
+South America=2
+Africa=3
+Europe=5
+Asia=7
+Australia=2
+
+[Territories]
+Alaska,70,126,North America,2,2,Northwest Territory,Alberta,Kamchatka
+Northwest Territory,148,127,North America,1,2,Alaska,Alberta,Greenland,Ontario
+Alberta,147,163,North America,2,2,Alaska,Northwest Territory,Ontario,Western United States
+Greenland,324,76,North America,1,2,Northwest Territory,Ontario,Quebec,Iceland
+Ontario,199,167,North America,1,2,Northwest Territory,Alberta,Greenland,Quebec,Western United States,Eastern United States
+Quebec,253,166,North America,2,2,Greenland,Ontario,Eastern United States
+Western United States,159,204,North America,1,2,Alberta,Ontario,Eastern United States,Central America
+Eastern United States,219,216,North America,2,2,Ontario,Quebec,Western United States,Central America
+Central America,183,262,North America,1,2,Western United States,Eastern United States,Venezuala
+
+Venezuala,259,303,South America,2,2,Central America,Peru,Brazil
+Peru,262,349,South America,1,2,Venezuala,Argentina,Brazil
+Argentina,263,407,South America,2,2,Peru,Brazil
+Brazil,308,337,South America,1,2,Venezuala,Peru,Argentina,North Africa
+
+North Africa,420,264,Africa,2,2,Brazil,Congo,East Africa,Egypt,Western Europe,Southern Europe
+Congo,475,318,Africa,1,2,North Africa,South Africa,East Africa
+South Africa,483,371,Africa,2,2,Congo,Madagascar,East Africa
+Madagascar,536,361,Africa,1,2,South Africa,East Africa
+East Africa,517,298,Africa,2,2,North Africa,Congo,South Africa,Madagascar,Egypt,Middle East
+Egypt,480,249,Africa,1,2,North Africa,East Africa,Southern Europe,Middle East
+
+Iceland,380,126,Europe,2,2,Greenland,Great Britain,Scandinavia
+Great Britain,419,169,Europe,1,2,Iceland,Western Europe,Scandinavia,Northern Europe
+Western Europe,423,202,Europe,2,2,North Africa,Great Britain,Northern Europe,Southern Europe
+Scandinavia,463,127,Europe,1,2,Iceland,Great Britain,Northern Europe,Ukraine
+Northern Europe,460,173,Europe,2,2,Great Britain,Western Europe,Scandinavia,Southern Europe,Ukraine
+Southern Europe,473,197,Europe,1,2,North Africa,Egypt,Western Europe,Northern Europe,Ukraine,Middle East
+Ukraine,524,157,Europe,2,2,Scandinavia,Northern Europe,Southern Europe,Middle East,Ural,Afghanistan
+
+Middle East,530,234,Asia,1,2,East Africa,Egypt,Southern Europe,Ukraine,Afghanistan,India
+Ural,613,136,Asia,2,2,Ukraine,Afghanistan,Siberia,China
+Afghanistan,585,192,Asia,1,2,Ukraine,Middle East,Ural,India,China
+India,612,249,Asia,2,2,Middle East,Afghanistan,China,Siam
+Siberia,666,110,Asia,1,2,Ural,China,Mongolia,Irkutsk,Yatusk
+China,662,217,Asia,2,2,Ural,Afghanistan,India,Siberia,Siam,Mongolia
+Siam,671,270,Asia,1,2,India,China,Indonesia
+Mongolia,707,188,Asia,2,2,Siberia,China,Irkutsk,Kamchatka,Japan
+Irkutsk,698,152,Asia,1,1,Siberia,Mongolia,Yatusk,Kamchatka
+Yatusk,738,118,Asia,2,1,Siberia,Irkutsk,Kamchatka
+Kamchatka,806,125,Asia,1,1,Alaska,Mongolia,Irkutsk,Yatusk,Japan
+Japan,759,220,Asia,2,1,Mongolia,Kamchatka
+
+Indonesia,698,314,Australia,1,1,Siam,New Guinea,Western Australia
+New Guinea,768,325,Australia,2,1,Indonesia,Western Australia,Eastern Australia
+Western Australia,729,373,Australia,1,3,Indonesia,New Guinea,Eastern Australia
+Eastern Australia,779,381,Australia,2,-858993460,New Guinea,Western Australia
+
+[Player]
+1, ,2,1
+2, ,0,1
+
+[Turn]
+1

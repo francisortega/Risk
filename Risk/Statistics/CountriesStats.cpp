@@ -27,7 +27,7 @@ string CountriesStats::getStats(vector<Country> *world, list<string> playerNames
 	//creating map of players
 	for (it = playerNames.begin(); it != playerNames.end(); ++it) {
 		string playerName = *it;
-		players.insert({ playerName, 0 });
+		players[playerName] = 0;
 	}
 
 	for (int i = 0; i < worldSize - 1; i++){

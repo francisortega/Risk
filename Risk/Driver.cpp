@@ -49,11 +49,19 @@ int main() {
 	MapEditor editor;
 	Map map;
 	bool validate = false;
+	bool isLoad = false;
+	GamePlay gameTurn;
+	Director director;
+	GameBuilder* gameRisk = new RiskGameBuilder();
+	director.setGameBuilder(gameRisk);
+	director.constructGame(&map, &gameTurn);
+	Game* risk = director.getGame();
 	while(validate == false)
 	{
 		cout<<"How to implement the map:" << endl;
 		cout<<"1. Create your own map." << endl;
 		cout<<"2. Load an existing map." << endl;
+		cout<<"3. Load game." << endl;
 		string temp;
 		cin >> temp;
 		string temp2 = "";
@@ -61,7 +69,16 @@ int main() {
 		if(temp == "2")
 		{
 			cout<<"Please enter map name: " << endl;
+
 			cin >> temp2;
+		}
+		else if (temp == "3")
+		{
+			risk->loadGame();
+			map = risk->getMap();
+			gameTurn = risk->getGamePlay();
+			isLoad = true;
+			break;
 		}
 		validate = editor.createMap(map, temp, temp2);
 		if(validate == false)
@@ -71,13 +88,24 @@ int main() {
 	}
 	
 	vector<Country> *world = map.getWorldMap();
-	
-	StartupPhase *startupPhase = new StartupPhase(&map);
-	list<Player> players = startupPhase->setPlayerNames();
-	//This methos uses rand to assign a random player to a country.
-	startupPhase->assignRandomCountry(&players);
-	startupPhase->initialFortification(&players);
-	cout << world->at(1).getArmy() << endl;
+	list<Player> players;
+	if(isLoad == false)
+	{
+		StartupPhase *startupPhase = new StartupPhase(&map);
+		players = startupPhase->setPlayerNames();
+		//This methos uses rand to assign a random player to a country.
+		startupPhase->assignRandomCountry(&players);
+		startupPhase->initialFortification(&players);
+		cout << world->at(1).getArmy() << endl;
+	}
+	else
+	{
+		vector<Player*>* p1 = gameTurn.getPlayers();
+		for(int i = 0; i < p1->size(); i++)
+		{
+			players.push_back(*p1->at(i));
+		}
+	}
 
 	//END STARTUP PHASE 
 	//MAIN PHASE *****************************************
@@ -99,83 +127,90 @@ int main() {
 	AttackPhase *attackPhase = new AttackPhase(&map);
 	ReinforcementPhase *reinforcePhase = new ReinforcementPhase(&map);
 	Fortification *fortifyPhase = new Fortification(&map);
-	
-	for (Player player : players){
-		reinforcePhase->reinforcementStart(player);
-		attackPhase->attackPhaseStart(player);
-		fortifyPhase->fortificationStart(player);
+	std::list<Player>::iterator player = players.begin();
+	if(isLoad)
+	{
+		for(int i = 1; i < gameTurn.getPlayerTurn(); ++i)
+		{
+			++player;
+		}
+	}
+	while(players.size() != 1)
+	{
+		int choice;
+		cout<< "Do you want to save game { 0 = yes; 1 = No}" << endl;
+		cin >> choice;
+
+		if(choice == 0) // yes
+		{
+			// Save Game
+			vector<Player*>* pl = new vector<Player*>;
+			//convert list to vector
+			list<Player> playerNames = players;
+			while(playerNames.size() != 0)
+			{
+				string name = playerNames.front().getName();
+				playerNames.pop_front();
+				Player* p = new Player();
+				p->setName(name);
+				pl->push_back(p);
+			}
+			gameTurn.setPlayers(pl);
+			gameTurn.setPlayerTurn(player->getId());
+			risk->saveGame();
+			for(int i = 0; i < pl->size(); ++i)
+			{
+				delete pl->at(i);
+			}
+		}
+
+		while (player != players.end())
+		{
+			reinforcePhase->reinforcementStart(*player);
+			attackPhase->attackPhaseStart(*player);
+			fortifyPhase->fortificationStart(*player);
 
 		
-		cout << "observer-decorator part" << endl;
-		//the undecorated statistics is only "The statistics are:"
-		PlayerView *pv = new PlayerView();
-		pv->stat->attach(pv);
-		//adding first decorator
-		pv->stat->detach(pv);
-		pv->stat = new ArmiesStats(pv->stat);
-		pv->stat->attach(pv);
-		pv->stat->getStats(world, playerNames);
-		//adding second decorator
-		pv->stat->detach(pv);
-		pv->stat = new ArmiesPercentage(pv->stat);
-		pv->stat->attach(pv);
-		pv->stat->getStats(world, playerNames);
-		//adding third decorator
-		pv->stat->detach(pv);
-		pv->stat = new CountriesStats(pv->stat);
-		pv->stat->attach(pv);
-		pv->stat->getStats(world, playerNames);
-		//adding fourth decorator
-		pv->stat->detach(pv);
-		pv->stat = new CountriesPercentage(pv->stat);
-		pv->stat->attach(pv);
-		pv->stat->getStats(world, playerNames);
-
+			cout << "observer-decorator part" << endl;
+			//the undecorated statistics is only "The statistics are:"
+			PlayerView *pv = new PlayerView();
+			pv->stat->attach(pv);
+			//adding first decorator
+			pv->stat->detach(pv);
+			pv->stat = new ArmiesStats(pv->stat);
+			pv->stat->attach(pv);
+			pv->stat->getStats(world, playerNames);
+			//adding second decorator
+			pv->stat->detach(pv);
+			pv->stat = new ArmiesPercentage(pv->stat);
+			pv->stat->attach(pv);
+			pv->stat->getStats(world, playerNames);
+			//adding third decorator
+			pv->stat->detach(pv);
+			pv->stat = new CountriesStats(pv->stat);
+			pv->stat->attach(pv);
+			pv->stat->getStats(world, playerNames);
+			//adding fourth decorator
+			pv->stat->detach(pv);
+			pv->stat = new CountriesPercentage(pv->stat);
+			pv->stat->attach(pv);
+			pv->stat->getStats(world, playerNames);
+			int nbofcuntries = map.getCountryList(player->getName()).size();
+            if(nbofcuntries == 0)
+            {
+                players.erase(player++);
+            }
+			else
+			{
+				++player;
+			}
+		}
+		player = players.begin();
 	}
-	
-
-	/*
-	// Save Game
-	GamePlay gameTurn;
-	vector<Player*>* pl = new vector<Player*>;
-	//convert list to vector
-	list<Player> playerNames = players;
-	while(playerNames.size() != 0)
-	{
-		string name = playerNames.front().getName();
-		playerNames.pop_front();
-		Player* p = new Player();
-		p->setName(name);
-		//Randomly add 2 cards for each players to test.
-		p->getCards()->add();
-		p->getCards()->add();
-		pl->push_back(p);
-	}
-	
-	gameTurn.setPlayers(pl);
-	gameTurn.setPlayerTurn(2);
-	Director director;
-	GameBuilder* gameRisk = new RiskGameBuilder();
-	director.setGameBuilder(gameRisk);
-	director.constructGame(&map, &gameTurn);
-	Game* risk = director.getGame();
-	//risk->saveGame();
-	risk->loadGame();
-	map = risk->getMap();
-	gameTurn = risk->getGamePlay();
-	pl = gameTurn.getPlayers();
-	for(int i = 0; i < pl->size(); i++)
-	{
-		cout << pl->at(i)->getName() << ": " << pl->at(i)->getCards()->getCardList()->front() << endl;
-	}
-
-	delete gameRisk;
-	for(int i = 0; i < pl->size(); ++i)
-	{
-		delete pl->at(i);
-	}
+	string name = players.front().getName();
+	cout<< "Player " << name <<" won the game." << endl;
 	delete risk;
-	*/
+	
 	system("pause");
 
 

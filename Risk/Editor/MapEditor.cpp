@@ -12,7 +12,8 @@ bool MapEditor::createMap(Map &map,string choose, string name)
 	case 1: createContinent(map);
 		break;
 	//get map from file.
-	case 2: return s.load(map, name);
+	case 2:  s.load(map, name);
+		break;
 	}
 
 	//return true if map is valide.

@@ -5,12 +5,6 @@ GamePlay::GamePlay()
 {
 	turnCounter= 1;
 	gameOver = false;
-	//initialize the map
-	SaveAndLoad* sl = new SaveAndLoad();
-	Map map;
-	bool t = sl->load(map, "World.map");
-	this->world = map.getWorldMap();
-
 }
 
 

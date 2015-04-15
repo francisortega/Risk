@@ -1,212 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Cards">
-      <UniqueIdentifier>{56e12d75-d15a-478a-ac9b-c5c79e8a7423}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GamePlay">
-      <UniqueIdentifier>{3dba1b5e-aa90-40f5-a480-400a8c7e9b36}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Phases">
-      <UniqueIdentifier>{0f465211-5dfb-4594-ac48-1d39735c400d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Map">
-      <UniqueIdentifier>{b9a4f28d-7ba0-470e-9424-f757201c7dad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Player">
-      <UniqueIdentifier>{af04f881-06cc-49c3-a965-2b41a9889bd9}</UniqueIdentifier>
-    </Filter>
-<<<<<<< HEAD
-    <Filter Include="Statistics">
-      <UniqueIdentifier>{4372f79b-d7a6-416d-afc1-9514b4e12d1e}</UniqueIdentifier>
-=======
-    <Filter Include="Game">
-      <UniqueIdentifier>{a5de266c-58b6-49ee-88d3-7e4761ddd366}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Editor">
-      <UniqueIdentifier>{17b8072f-ccc3-433e-b1c9-f7fb9b216ee1}</UniqueIdentifier>
->>>>>>> 93b925561f2ff73cd684287cdadbd57b85c5c51e
-    </Filter>
+    <ClCompile Include="Cards\Cards.cpp" />
+    <ClCompile Include="Driver.cpp" />
+    <ClCompile Include="Editor\MapEditor.cpp" />
+    <ClCompile Include="GamePlay\GamePlay.cpp" />
+    <ClCompile Include="Game\Director.cpp" />
+    <ClCompile Include="Game\Game.cpp" />
+    <ClCompile Include="Game\GameBuilder.cpp" />
+    <ClCompile Include="Game\RiskGameBuilder.cpp" />
+    <ClCompile Include="Map\Country.cpp" />
+    <ClCompile Include="Map\Map.cpp" />
+    <ClCompile Include="Phases\AttackPhase.cpp" />
+    <ClCompile Include="Phases\Battle.cpp" />
+    <ClCompile Include="Phases\Dice.cpp" />
+    <ClCompile Include="Phases\FortificationPhase.cpp" />
+    <ClCompile Include="Phases\ReinformentPhase.cpp" />
+    <ClCompile Include="Phases\StartupPhase.cpp" />
+    <ClCompile Include="Player\Player.cpp" />
+    <ClCompile Include="SaveAndLoad.cpp" />
+    <ClCompile Include="Statistics\ArmiesPercentage.cpp" />
+    <ClCompile Include="Statistics\ArmiesStats.cpp" />
+    <ClCompile Include="Statistics\BasicStats.cpp" />
+    <ClCompile Include="Statistics\CountriesPercentage.cpp" />
+    <ClCompile Include="Statistics\CountriesStats.cpp" />
+    <ClCompile Include="Statistics\Observable.cpp" />
+    <ClCompile Include="Statistics\Observer.cpp" />
+    <ClCompile Include="Statistics\PlayerView.cpp" />
+    <ClCompile Include="Statistics\StatDecorator.cpp" />
+    <ClCompile Include="Statistics\Statistics.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SaveAndLoad.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cards\Cards.h">
-      <Filter>Cards</Filter>
-    </ClInclude>
-    <ClInclude Include="Map\Map.h">
-      <Filter>Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Map\Country.h">
-      <Filter>Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Phases\AttackPhase.h">
-      <Filter>Phases</Filter>
-    </ClInclude>
-    <ClInclude Include="Phases\Battle.h">
-      <Filter>Phases</Filter>
-    </ClInclude>
-    <ClInclude Include="Phases\Dice.h">
-      <Filter>Phases</Filter>
-    </ClInclude>
-    <ClInclude Include="Phases\StartupPhase.h">
-      <Filter>Phases</Filter>
-    </ClInclude>
-    <ClInclude Include="Player\Player.h">
-      <Filter>Player</Filter>
-    </ClInclude>
-    <ClInclude Include="GamePlay\GamePlay.h">
-      <Filter>GamePlay</Filter>
-    </ClInclude>
-    <ClInclude Include="Phases\ReinformentPhase.h">
-      <Filter>Phases</Filter>
-    </ClInclude>
-    <ClInclude Include="Phases\FortificationPhase.h">
-      <Filter>Phases</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Statistics\ArmiesPercentage.h">
-      <Filter>Statistics</Filter>
-    </ClInclude>
-    <ClInclude Include="Statistics\ArmiesStats.h">
-      <Filter>Statistics</Filter>
-    </ClInclude>
-    <ClInclude Include="Statistics\BasicStats.h">
-      <Filter>Statistics</Filter>
-    </ClInclude>
-    <ClInclude Include="Statistics\CountriesPercentage.h">
-      <Filter>Statistics</Filter>
-    </ClInclude>
-    <ClInclude Include="Statistics\CountriesStats.h">
-      <Filter>Statistics</Filter>
-    </ClInclude>
-    <ClInclude Include="Statistics\Observable.h">
-      <Filter>Statistics</Filter>
-    </ClInclude>
-    <ClInclude Include="Statistics\Observer.h">
-      <Filter>Statistics</Filter>
-    </ClInclude>
-    <ClInclude Include="Statistics\PlayerView.h">
-      <Filter>Statistics</Filter>
-    </ClInclude>
-    <ClInclude Include="Statistics\StatDecorator.h">
-      <Filter>Statistics</Filter>
-    </ClInclude>
-    <ClInclude Include="Statistics\Statistics.h">
-      <Filter>Statistics</Filter>
-=======
-    <ClInclude Include="Game\Game.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\GameBuilder.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\RiskGameBuilder.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Director.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Editor\MapEditor.h">
-      <Filter>Editor</Filter>
->>>>>>> 93b925561f2ff73cd684287cdadbd57b85c5c51e
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="SaveAndLoad.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Cards\Cards.cpp">
-      <Filter>Cards</Filter>
-    </ClCompile>
-    <ClCompile Include="Driver.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Map\Map.cpp">
-      <Filter>Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Map\Country.cpp">
-      <Filter>Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Phases\Battle.cpp">
-      <Filter>Phases</Filter>
-    </ClCompile>
-    <ClCompile Include="Phases\Dice.cpp">
-      <Filter>Phases</Filter>
-    </ClCompile>
-    <ClCompile Include="Phases\StartupPhase.cpp">
-      <Filter>Phases</Filter>
-    </ClCompile>
-    <ClCompile Include="Phases\AttackPhase.cpp">
-      <Filter>Phases</Filter>
-    </ClCompile>
-    <ClCompile Include="Player\Player.cpp">
-      <Filter>Player</Filter>
-    </ClCompile>
-    <ClCompile Include="GamePlay\GamePlay.cpp">
-      <Filter>GamePlay</Filter>
-    </ClCompile>
-    <ClCompile Include="Phases\ReinformentPhase.cpp">
-      <Filter>Phases</Filter>
-    </ClCompile>
-    <ClCompile Include="Phases\FortificationPhase.cpp">
-      <Filter>Phases</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Statistics\ArmiesPercentage.cpp">
-      <Filter>Statistics</Filter>
-    </ClCompile>
-    <ClCompile Include="Statistics\ArmiesStats.cpp">
-      <Filter>Statistics</Filter>
-    </ClCompile>
-    <ClCompile Include="Statistics\BasicStats.cpp">
-      <Filter>Statistics</Filter>
-    </ClCompile>
-    <ClCompile Include="Statistics\CountriesPercentage.cpp">
-      <Filter>Statistics</Filter>
-    </ClCompile>
-    <ClCompile Include="Statistics\CountriesStats.cpp">
-      <Filter>Statistics</Filter>
-    </ClCompile>
-    <ClCompile Include="Statistics\Observable.cpp">
-      <Filter>Statistics</Filter>
-    </ClCompile>
-    <ClCompile Include="Statistics\Observer.cpp">
-      <Filter>Statistics</Filter>
-    </ClCompile>
-    <ClCompile Include="Statistics\PlayerView.cpp">
-      <Filter>Statistics</Filter>
-    </ClCompile>
-    <ClCompile Include="Statistics\StatDecorator.cpp">
-      <Filter>Statistics</Filter>
-    </ClCompile>
-    <ClCompile Include="Statistics\Statistics.cpp">
-      <Filter>Statistics</Filter>
-=======
-    <ClCompile Include="Game\Game.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\GameBuilder.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\RiskGameBuilder.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Director.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Editor\MapEditor.cpp">
-      <Filter>Editor</Filter>
->>>>>>> 93b925561f2ff73cd684287cdadbd57b85c5c51e
-    </ClCompile>
+    <ClInclude Include="Cards\Cards.h" />
+    <ClInclude Include="Editor\MapEditor.h" />
+    <ClInclude Include="GamePlay\GamePlay.h" />
+    <ClInclude Include="Game\Director.h" />
+    <ClInclude Include="Game\Game.h" />
+    <ClInclude Include="Game\GameBuilder.h" />
+    <ClInclude Include="Game\RiskGameBuilder.h" />
+    <ClInclude Include="Map\Country.h" />
+    <ClInclude Include="Map\Map.h" />
+    <ClInclude Include="Phases\AttackPhase.h" />
+    <ClInclude Include="Phases\Battle.h" />
+    <ClInclude Include="Phases\Dice.h" />
+    <ClInclude Include="Phases\FortificationPhase.h" />
+    <ClInclude Include="Phases\ReinformentPhase.h" />
+    <ClInclude Include="Phases\StartupPhase.h" />
+    <ClInclude Include="Player\Player.h" />
+    <ClInclude Include="SaveAndLoad.h" />
+    <ClInclude Include="Statistics\ArmiesPercentage.h" />
+    <ClInclude Include="Statistics\ArmiesStats.h" />
+    <ClInclude Include="Statistics\BasicStats.h" />
+    <ClInclude Include="Statistics\CountriesPercentage.h" />
+    <ClInclude Include="Statistics\CountriesStats.h" />
+    <ClInclude Include="Statistics\Observable.h" />
+    <ClInclude Include="Statistics\Observer.h" />
+    <ClInclude Include="Statistics\PlayerView.h" />
+    <ClInclude Include="Statistics\StatDecorator.h" />
+    <ClInclude Include="Statistics\Statistics.h" />
   </ItemGroup>
 </Project>

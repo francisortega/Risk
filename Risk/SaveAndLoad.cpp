@@ -36,7 +36,6 @@ bool SaveAndLoad::load(Map &map,string name)
 	try
 	{
 		ifstream file(name);
-		file.exceptions ( std::ifstream::failbit | std::ifstream::badbit );
 		string str;
 		bool isContinent = false;
 		bool isTerritorie = false;
@@ -49,7 +48,7 @@ bool SaveAndLoad::load(Map &map,string name)
 		}   
 		while (getline(file, str))
 		{
-		
+			
 			if(isContinent == true && str[0] != '[' && str.length() > 0)
 			{
 				continent = split(str, '=');
@@ -100,15 +99,11 @@ bool SaveAndLoad::load(Map &map,string name)
 				map.addAdjacency(name[n], adjCountries[n]);
 			}
 		}
+		file.close();
 		if(validate(map) == true)
 		{
 			return true;
 		}
-	}
-	catch (std::ifstream::failure e) 
-	{
-		cerr << "Exception opening/reading/closing file\n";
-		return false;
 	}
 
 	catch (exception& e)

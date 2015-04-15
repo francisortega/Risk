@@ -12,9 +12,10 @@ Player::Player()
 	this->cards = new Cards();
 }
 
-Player::Player(string name)
+Player::Player(string name, int id)
 {
 	this->name = name;
+	this->id = id;
 	this->cards = new Cards();
 }
 
@@ -48,4 +49,13 @@ string Player::getComputer()
 void Player::setComputer(string computer)
 {
 	this->computer = computer;
+}
+
+void Player::setId(int id)
+{
+	this->id = id;
+}
+int Player::getId()
+{
+	return id;
 }

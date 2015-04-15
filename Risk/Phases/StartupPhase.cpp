@@ -48,7 +48,7 @@ list<Player> StartupPhase::setPlayerNames(){
 	for (int i = 1; i <= numOfPlayers; i++){
 		cout << "Enter player " << i << " name:\n";
 		cin >> name;
-		Player *tmp = new Player(name);
+		Player *tmp = new Player(name, i);
 		players.push_back(*tmp);
 	}
 	return players;
