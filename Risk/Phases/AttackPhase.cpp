@@ -56,7 +56,7 @@ void AttackPhase::prepareAttack(Player &currentP)
 			}
 			
 		}
-		cin >> selectedCountry; //selected country name
+		getline(cin, selectedCountry); //selected country name
 		//show list of ennemi adjacent country
 		adjacentCountries = currentMap->getAdjacentCountries(selectedCountry, "exc"); // exc = only ennemy
 	} while (currentMap->get(selectedCountry) == NULL); // country name incorrect therefore does not exist
@@ -68,7 +68,7 @@ void AttackPhase::prepareAttack(Player &currentP)
 		{
 			cout << countryEnemy.getName() << "- army power : " << countryEnemy.getArmy() << endl;
 		}
-		cin >> enemy; //name of country
+		getline(cin, enemy); //name of country
 	} while (currentMap->get(enemy) == NULL);// country name incorrect therefore does not exist
 	
 	

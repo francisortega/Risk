@@ -161,6 +161,7 @@ int main() {
 			gameTurn.setPlayers(pl);
 			gameTurn.setPlayerTurn(player->getId());
 			risk->saveGame();
+			
 		}
 
 		while (player != players.end())
