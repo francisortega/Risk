@@ -43,9 +43,7 @@ bool SaveAndLoad::load(Map &map,string name)
 		vector<string> name;
 		vector<vector<string>> adjCountries;
 		vector<string> continent;
-		if (!file) {
-			return false;
-		}   
+
 		while (getline(file, str))
 		{
 			
@@ -56,7 +54,7 @@ bool SaveAndLoad::load(Map &map,string name)
 				istringstream ( continent[1] ) >> num;
 				map.addContinents(continent[0], num);
 			}
-		
+			
 			if(isTerritorie == true && str[0] != '[' && str.length() > 0)
 			{
 				territories = split(str, ',');
@@ -66,12 +64,14 @@ bool SaveAndLoad::load(Map &map,string name)
 				{
 					country1.push_back(territories[n]);
 				}
-									adjCountries.push_back(country1);
+
+				adjCountries.push_back(country1);
 				
 				int x;
 				istringstream ( territories[1] ) >> x;
 				int y;
 				istringstream ( territories[2] ) >> y;
+
 				map.addCountry(id, territories[0], territories[3],x,y);
 				++id;
 			}
@@ -93,29 +93,25 @@ bool SaveAndLoad::load(Map &map,string name)
 					isTerritorie = false;
 				}
 			}
-		
-			for(size_t n=0; n < adjCountries.size(); n++)
-			{
-				map.addAdjacency(name[n], adjCountries[n]);
-			}
 		}
-		file.close();
-		if(validate(map) == true)
+
+		for(size_t n=0; n < adjCountries.size(); n++)
 		{
-			return true;
+			map.addAdjacency(name[n], adjCountries[n]);
 		}
 	}
-
 	catch (exception& e)
 	{
 		cout << e.what() << '\n';
 		return false;
 	}
-	return false;
 	
+	if(validate(map) == true)
+	{
+		return true;
+	}
+	return false;	
 }
-
-
 /**
  * The function will get the number of the country.
  */

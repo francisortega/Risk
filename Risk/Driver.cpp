@@ -58,6 +58,7 @@ int main() {
 	Game* risk = director.getGame();
 	while(validate == false)
 	{
+		Map tempMap;
 		cout<<"How to implement the map:" << endl;
 		cout<<"1. Create your own map." << endl;
 		cout<<"2. Load an existing map." << endl;
@@ -80,10 +81,14 @@ int main() {
 			isLoad = true;
 			break;
 		}
-		validate = editor.createMap(map, temp, temp2);
+		validate = editor.createMap(tempMap, temp, temp2);
 		if(validate == false)
 		{
-			cout<< "Map is not connected." <<endl;
+			cout<< "Map is not connected.\n" <<endl;
+		}
+		else
+		{
+			map = tempMap;
 		}
 	}
 	
