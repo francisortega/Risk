@@ -67,7 +67,7 @@ void Fortification::fortificationStart(Player& player)
 			}
 			if (printedCountries > 0)
 			{
-				cin >> countryToFortify;
+				getline(cin, countryToFortify);
 				//error handling test 
 				/*if (currentMap->get(countryToFortify) == NULL)
 				{
@@ -102,7 +102,7 @@ void Fortification::fortificationStart(Player& player)
 						cout << country.getName() << "- army power : " << country.getArmy() << endl;
 					}
 				}
-				cin >> countryFortifyFrom;
+				getline(cin, countryFortifyFrom);
 			} while (currentMap->get(countryFortifyFrom) == NULL);
 
 
