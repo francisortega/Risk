@@ -161,7 +161,7 @@ int main() {
 			gameTurn.setPlayers(pl);
 			gameTurn.setPlayerTurn(player->getId());
 			risk->saveGame();
-			
+
 		}
 
 		while (player != players.end())
@@ -195,15 +195,17 @@ int main() {
 			pv->stat = new CountriesPercentage(pv->stat);
 			pv->stat->attach(pv);
 			pv->stat->getStats(world, playerNames);
-			int nbofcuntries = map.getCountryList(player->getName()).size();
-            if(nbofcuntries == 0)
-            {
-                players.erase(player++);
-            }
-			else
-			{
-				++player;
+			for (std::list<Player>::iterator it = players.begin(); it != players.end(); it++)
+			{	
+				int nbofcuntries = map.getCountryList(it->getName()).size();
+				if(nbofcuntries == 0)
+				{
+					players.erase(it);
+					it = players.begin();
+				}
 			}
+			if(player != players.end())
+				++player;
 		}
 		player = players.begin();
 	}
