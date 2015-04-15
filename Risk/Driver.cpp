@@ -161,10 +161,6 @@ int main() {
 			gameTurn.setPlayers(pl);
 			gameTurn.setPlayerTurn(player->getId());
 			risk->saveGame();
-			for(int i = 0; i < pl->size(); ++i)
-			{
-				delete pl->at(i);
-			}
 		}
 
 		while (player != players.end())
